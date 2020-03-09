@@ -1,0 +1,9 @@
+#feedback { font-size: 1.4em; }
+#selectable .ui-selecting { background: #2727271a; }
+#selectable .ui-selected { background: #2727271a; color: white; }
+#selectable 
+{ list-style-type: none; 
+	/*margin: 0;
+	padding: 0;*/
+ }
+

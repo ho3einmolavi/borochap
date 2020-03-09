@@ -1,0 +1,252 @@
+.wizard{
+    margin:auto;
+    z-index: 2;
+}
+
+    .wizard .nav-tabs {
+        position: relative;
+        /*margin: 40px auto;*/
+        margin-bottom: 0;
+       /*border-bottom-color: #e0e0e0;*/
+       margin-right: 145px;
+ margin-top: -82px;
+    }
+
+    .wizard > div.wizard-inner {
+        position: relative;
+    margin-top: -82px;
+    }
+/*
+.connecting-line {
+    height: 2px;
+    background: #e0e0e0;
+    position: absolute;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+}
+*/
+.nav{
+    padding-right: 0px !important;
+}
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    border: 0;
+    border-bottom-color: transparent;
+
+}
+.nav-tabs{
+    border: none !important;
+}
+.nav-tabs li{
+    float: right !important;
+}
+span.round-tab {
+    width: 76px;
+    height: 73px;
+    /*line-height: 70px;*/
+    display: inline-block;
+    border-radius: 100px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    z-index: 2;
+    /*position: absolute;*/
+    left: 0;
+    text-align: center;
+    font-size: 25px;
+    margin-left: 4px;
+}
+span.round-tab i{
+    color:#555555;
+}
+.wizard li.active span.round-tab {
+    background: #fff;
+    border: 3px solid green;
+    
+}
+.wizard li.active span.round-tab i{
+    color: #5bc0de;
+}
+/*////////hooooover///////////*/
+/*
+span.round-tab:hover {
+    color: #333;
+    border: 2px solid #333;
+}*/
+
+.wizard .nav-tabs > li {
+    width:;
+}
+
+.wizard li:after {
+
+    /*position: absolute;*/
+   /* left: 46%;
+    opacity: 0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: #5bc0de;
+    transition: 0.1s ease-in-out;*/
+}
+/*
+.wizard li.active:after {
+    content: " ";
+    position: absolute;
+    left: 96%;
+    opacity: 1;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 10px solid transparent;
+    border-bottom-color: #53dd1a;
+}*/
+
+.wizard .nav-tabs > li a {
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+}
+
+    .wizard .nav-tabs > li a:hover {
+        background: transparent;
+    }
+.tab-pane{
+    height: auto;
+    background-color:;
+}
+.wizard .tab-pane {
+    position: relative;
+    /*padding-top: 50px;*/
+    direction: rtl;
+}
+
+.wizard h3 {
+    margin-top: 0;
+}
+
+@media (min-width: 320px) and (max-width: 570px) {
+
+    .wizard {
+        width: 100%;
+    }
+
+    span.round-tab {
+        font-size: 16px;
+        width: 58px;
+        height: 58px;
+        line-height: 50px;
+    }
+
+    .wizard .nav-tabs > li a {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard li.active:after {
+        content: " ";
+        position: absolute;
+        /*left: 35%;*/
+    }
+}
+
+@media (min-width: 570px) and (max-width: 768px){
+span.round-tab{
+    width: 76px !important;
+    height: 74px !important;
+}
+.wizard .nav-tabs{
+    margin-right: 10px;
+}
+
+}
+
+@media (min-width: 768px) and (max-width: 960px){
+.header-main-end-right-bottom-start{
+    justify-content: flex-start;
+}
+.header-main-end-right-botto-img{
+    justify-content: flex-end;
+}
+
+}
+@media (min-width: 960px) and (max-width: 1140px){
+.header-main-end-right-botto-img{
+    display: none;
+}
+.header-main-end-right-bottom-start{
+    justify-content: flex-start;
+}
+}
+
+.pull-right{
+float: left !important;
+margin-left: 132px;
+
+
+}
+
+.bottom-li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+}
+/*//////////570//////////////////*/
+@media (max-width: 570px){
+.wizard .nav-tabs{
+    margin-right: 0px;
+}
+.body-main-all{
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+.step-to-bottom{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.d-p-responsive{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.round-tab img{
+    height: 55px;
+}
+span.round-tab{
+    margin-left: -1px;
+}
+.b-responsive{
+    margin-left: 90px !important;
+}
+.bb-responsive{
+    margin-left: 60px !important;
+}
+
+.bottom-li{
+    margin-bottom: 0px;
+}
+}
+
+/*//////////end-570//////////////////*/
+/*//////////570//////////////////*/
+@media (min-width: 320px) and (max-width: 1114px){
+  .wizard > div.wizard-inner {
+    position: relative;
+    margin-top: 82px;
+    }
+}
+
+@media (min-width: 1115px) and (max-width: 1360px){
+  .wizard > div.wizard-inner {
+    position: relative;
+    margin-top: 82px;
+    }
+
+}

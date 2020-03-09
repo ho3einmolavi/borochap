@@ -1,0 +1,6 @@
+{
+  "cron": [
+    "* * * * * cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1"
+  ] ,
+  "volume": "/var/www/html/public/files"
+}
