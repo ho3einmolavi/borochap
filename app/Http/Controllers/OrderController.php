@@ -97,7 +97,7 @@ class OrderController extends Controller
 
         if ($request->has('finance'))
         {
-            $finance = Finance::find($request->finance);
+            $finance = Finance::find($request->financeF);
             $finance->update([
                 'order_id' => $order->id
             ]);
@@ -111,6 +111,7 @@ class OrderController extends Controller
 
         foreach ($orders as $order)
         {
+            $order['user'] = $order->user;
             if ($order['paid'] != $order['final_price'])
             {
                 $order['invoices'] = $order->invoices;

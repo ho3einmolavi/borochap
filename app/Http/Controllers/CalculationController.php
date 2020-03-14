@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Morilog\Jalali\Jalalian;
 
 class CalculationController extends Controller
 {
@@ -126,8 +127,9 @@ class CalculationController extends Controller
             'cover_material' => $request->cover_material  ,
             'edge' => $request->edge  ,
             'Binding' => $request->Binding ,
-             'book_cost' => $book_price,
-             'final_price' => round($final_price) ,
+            'book_cost' => $book_price,
+            'final_price' => round($final_price) ,
+            'date' => Jalalian::forge('now')->format('Y/m/d')
         ];
 
         return response()->json($order);

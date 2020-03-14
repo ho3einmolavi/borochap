@@ -38,13 +38,18 @@ class sendMessageController extends Controller
                 'template' => $request->template
             ];
         }
+
+        if ($request->template == 'BRverify1')
+        {
+            $code = $request->code;
+            $body = [
+                'receptor' => $request->phone,
+                'token' => $code,
+                'template' => $request->template
+            ];
+        }
       //  $code = rand(100000, 999999);
         $client = new Client();
-        $body = [
-            'receptor' => $request->phone,
-            'token' => $code,
-            'template' => $request->template
-        ];
         $headers = [
             'Accept' => 'application/json',
 //            'Content-Length' => 411

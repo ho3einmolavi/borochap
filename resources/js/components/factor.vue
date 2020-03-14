@@ -220,14 +220,14 @@
                     </div>
                     <div class="god-end-form">
                         <div class="god-end-form-top">
-                            <span> تاریخ :  </span>
+                            <span> تاریخ : <span>{{currentDate}}</span>  </span>
                         </div>
                         <div class="god-end-form-bottom">
                             <span> شماره سفارش : </span>
                         </div>
                     </div>
                     <div class="god-end-mohr">
-                        <img src="img/factor/back.png">
+                        <img src="/img/factor/back.png">
                         <div class="god-end-mohr-span">
                             <span> مهر و امضاء فروشنده </span>
                         </div>
@@ -287,13 +287,15 @@
                 price: '' ,
                 price1: '' ,
                 price2: '',
-                price3: ''
+                price3: '' ,
+                currentDate: '' ,
 
             }
         } ,
         methods: {
             factor() {
                 this.data1 = JSON.parse(localStorage.final);
+                this.currentDate = this.data1.date;
                 this.price3=this.data1.book_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 this.data2 = JSON.parse(localStorage.user);
                 this.price = this.data1.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

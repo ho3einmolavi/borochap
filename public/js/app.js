@@ -1930,10 +1930,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 var moment = __webpack_require__(/*! jalali-moment */ "./node_modules/jalali-moment/jalali-moment.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3071,12 +3067,14 @@ __webpack_require__.r(__webpack_exports__);
       price: '',
       price1: '',
       price2: '',
-      price3: ''
+      price3: '',
+      currentDate: ''
     };
   },
   methods: {
     factor: function factor() {
       this.data1 = JSON.parse(localStorage["final"]);
+      this.currentDate = this.data1.date;
       this.price3 = this.data1.book_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       this.data2 = JSON.parse(localStorage.user);
       this.price = this.data1.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -3996,6 +3994,25 @@ __webpack_require__.r(__webpack_exports__);
         console.log(err.response);
       });
     },
+    sendMessage: function sendMessage(order) {
+      axios({
+        url: '/api/sendMessage',
+        method: 'post',
+        data: {
+          phone: order.user.phone,
+          code: order.code,
+          template: 'BRverify1'
+        },
+        headers: {
+          Accept: 'application/json',
+          Authorization: "Bearer ".concat(localStorage.token)
+        }
+      }).then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.log(err.response);
+      });
+    },
     search: function search() {
       var _this2 = this;
 
@@ -4030,14 +4047,16 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    verify: function verify(id) {
+    verify: function verify(ord) {
       var _this4 = this;
 
       axios({
-        url: "/api/order/".concat(id, "/verify"),
+        url: "/api/order/".concat(ord.id, "/verify"),
         method: 'get'
       }).then(function (res) {
         console.log(res);
+
+        _this4.sendMessage(ord);
 
         _this4.get_orders();
       })["catch"](function (err) {
@@ -4325,7 +4344,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('pay');
-    this.cal(); // this.getData();
+    this.cal();
+    this.check_user();
   },
   data: function data() {
     return {
@@ -4339,12 +4359,37 @@ __webpack_require__.r(__webpack_exports__);
       ok: '',
       price0: '',
       price1: '',
-      price2: ''
+      price2: '',
+      showCredit: 0,
+      showPrepayment: 0
     };
   },
   methods: {
-    prepayment: function prepayment() {
+    check_user: function check_user() {
       var _this = this;
+
+      axios({
+        url: '/api/user',
+        method: 'get',
+        headers: {
+          Authorization: "Bearer ".concat(localStorage.getItem('token'))
+        }
+      }).then(function (res) {
+        console.log(res);
+
+        if (res.data.credit_limit) {
+          _this.showCredit = 1;
+        }
+
+        if (res.data.prepayment) {
+          _this.showPrepayment = 1;
+        }
+      })["catch"](function (err) {
+        console.log(err.response);
+      });
+    },
+    prepayment: function prepayment() {
+      var _this2 = this;
 
       axios({
         url: '/api/use/prepayment',
@@ -4359,9 +4404,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res);
 
         if (res.data.status === 'success') {
-          _this.cost = res.data.cost;
+          _this2.cost = res.data.cost;
 
-          _this.go_to_pay(_this.cost);
+          _this2.go_to_pay(_this2.cost);
         }
       })["catch"](function (err) {
         console.log(err.response);
@@ -4397,7 +4442,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     credit_limit: function credit_limit() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios({
         url: '/api/use/creditLimit',
@@ -4416,23 +4461,23 @@ __webpack_require__.r(__webpack_exports__);
             url: '/api/create/order',
             method: 'post',
             data: {
-              one_color_toner: _this2.get.one_color_toner,
-              circle_cover: _this2.get.circle_cover,
-              circulation: _this2.get.circulation,
-              thickness: _this2.get.thickness,
-              edge: _this2.get.edge,
-              Binding: _this2.get.Binding,
-              size: _this2.get.size,
-              material: _this2.get.material,
-              one_color_number: _this2.get.one_color_number,
-              colorful_number: _this2.get.colorful_number,
-              colorful_toner: _this2.get.colorful_toner,
-              cover_type: _this2.get.cover_type,
-              cover_material: _this2.get.cover_material,
-              book_cost: _this2.get.book_cost,
+              one_color_toner: _this3.get.one_color_toner,
+              circle_cover: _this3.get.circle_cover,
+              circulation: _this3.get.circulation,
+              thickness: _this3.get.thickness,
+              edge: _this3.get.edge,
+              Binding: _this3.get.Binding,
+              size: _this3.get.size,
+              material: _this3.get.material,
+              one_color_number: _this3.get.one_color_number,
+              colorful_number: _this3.get.colorful_number,
+              colorful_toner: _this3.get.colorful_toner,
+              cover_type: _this3.get.cover_type,
+              cover_material: _this3.get.cover_material,
+              book_cost: _this3.get.book_cost,
               //pay_id: this.Authority ,
-              paid: _this2.cost,
-              final_price: _this2.cost,
+              paid: _this3.cost,
+              final_price: _this3.cost,
               finance: res.data.finance_id
             },
             headers: {
@@ -4450,7 +4495,7 @@ __webpack_require__.r(__webpack_exports__);
               confirmButtonColor: '#5f1255'
             });
 
-            _this2.sendMessage(res.data.code);
+            _this3.sendMessage(res.data.code);
           })["catch"](function (err) {
             console.log(err.response);
             Swal.fire({
@@ -4477,7 +4522,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     cal: function cal() {
-      var _this3 = this;
+      var _this4 = this;
 
       if (localStorage["final"]) {
         axios({
@@ -4486,16 +4531,16 @@ __webpack_require__.r(__webpack_exports__);
           data: JSON.parse(localStorage.getItem('final'))
         }).then(function (res) {
           localStorage.setItem('final', JSON.stringify(res.data));
-          _this3.get = res.data;
+          _this4.get = res.data;
 
-          _this3.checkForDiscounts();
+          _this4.checkForDiscounts();
         })["catch"](function (err) {
           console.log(err.response);
         });
       }
     },
     checkForDiscounts: function checkForDiscounts() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios({
         url: '/api/check/discounts',
@@ -4513,29 +4558,29 @@ __webpack_require__.r(__webpack_exports__);
             url: '/api/use/off/type',
             method: 'post',
             data: {
-              base: _this4.get.final_price,
-              number: _this4.get.circulation
+              base: _this5.get.final_price,
+              number: _this5.get.circulation
             }
           }).then(function (res) {
             console.log(res);
-            _this4.cost = res.data;
-            localStorage.setItem('cost', JSON.stringify(_this4.cost));
-            _this4.ok1 = 1;
-            _this4.ok = 1;
-            _this4.price0 = _this4.get.book_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            _this4.price1 = _this4.get.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            _this4.price2 = _this4.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            _this5.cost = res.data;
+            localStorage.setItem('cost', JSON.stringify(_this5.cost));
+            _this5.ok1 = 1;
+            _this5.ok = 1;
+            _this5.price0 = _this5.get.book_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            _this5.price1 = _this5.get.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            _this5.price2 = _this5.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           })["catch"](function (err) {
             console.log(err.response);
 
-            _this4.discount();
+            _this5.discount();
           });
         } else if (status === 2) {
           axios({
             url: '/api/use/exclusive_discounts',
             method: 'post',
             data: {
-              base: _this4.get.final_price
+              base: _this5.get.final_price
             },
             headers: {
               Accept: 'application/json',
@@ -4543,20 +4588,20 @@ __webpack_require__.r(__webpack_exports__);
             }
           }).then(function (res) {
             console.log(res);
-            _this4.cost = res.data;
-            localStorage.setItem('cost', JSON.stringify(_this4.cost));
-            _this4.ok1 = 1;
-            _this4.ok = 1;
-            _this4.price0 = _this4.get.book_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            _this4.price1 = _this4.get.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            _this4.price2 = _this4.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            _this5.cost = res.data;
+            localStorage.setItem('cost', JSON.stringify(_this5.cost));
+            _this5.ok1 = 1;
+            _this5.ok = 1;
+            _this5.price0 = _this5.get.book_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            _this5.price1 = _this5.get.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            _this5.price2 = _this5.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           })["catch"](function (err) {
             console.log(err.response);
 
-            _this4.discount();
+            _this5.discount();
           });
         } else if (status === 3) {
-          _this4.discount();
+          _this5.discount();
         }
       })["catch"](function (err) {
         console.log(err.response);
@@ -4570,7 +4615,7 @@ __webpack_require__.r(__webpack_exports__);
       this.checkForDiscounts(); //  this.discount();
     },
     discount: function discount() {
-      var _this5 = this;
+      var _this6 = this;
 
       localStorage.removeItem('cost');
       axios({
@@ -4586,35 +4631,35 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (res) {
         console.log(res);
-        _this5.cost = res.data.cost_after_off;
-        localStorage.setItem('cost', JSON.stringify(_this5.cost));
-        _this5.ok1 = 1;
-        _this5.ok = 1;
-        _this5.price0 = _this5.get.book_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        _this5.price1 = _this5.get.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        _this5.price2 = _this5.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        _this6.cost = res.data.cost_after_off;
+        localStorage.setItem('cost', JSON.stringify(_this6.cost));
+        _this6.ok1 = 1;
+        _this6.ok = 1;
+        _this6.price0 = _this6.get.book_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        _this6.price1 = _this6.get.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        _this6.price2 = _this6.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       })["catch"](function (err) {
         console.log(err.response);
 
         if (err.response.status === 404) {
-          _this5.ok = 0;
-          _this5.ok1 = 1;
-          _this5.errors = err.response;
-          _this5.cost = _this5.get.final_price;
-          localStorage.setItem('cost', JSON.stringify(_this5.cost));
+          _this6.ok = 0;
+          _this6.ok1 = 1;
+          _this6.errors = err.response;
+          _this6.cost = _this6.get.final_price;
+          localStorage.setItem('cost', JSON.stringify(_this6.cost));
         } else {
-          _this5.ok = 1;
-          _this5.ok1 = 1;
-          _this5.cost = _this5.get.final_price;
-          _this5.price0 = _this5.get.book_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-          _this5.price1 = _this5.get.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-          _this5.price2 = _this5.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-          localStorage.setItem('cost', JSON.stringify(_this5.cost));
+          _this6.ok = 1;
+          _this6.ok1 = 1;
+          _this6.cost = _this6.get.final_price;
+          _this6.price0 = _this6.get.book_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          _this6.price1 = _this6.get.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          _this6.price2 = _this6.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          localStorage.setItem('cost', JSON.stringify(_this6.cost));
         }
       });
     },
     go_to_pay: function go_to_pay(cost) {
-      var _this6 = this;
+      var _this7 = this;
 
       if (!this.cost) {
         this.$swal('شما سفارشی ثبت نکرده اید', '', 'error');
@@ -4630,12 +4675,12 @@ __webpack_require__.r(__webpack_exports__);
             Authorization: "Bearer ".concat(localStorage.token)
           }
         }).then(function (res) {
-          _this6.loader = 0;
+          _this7.loader = 0;
           console.log(res);
           open(res.data, '_blank');
         })["catch"](function (err) {
           console.log(err.response);
-          _this6.loader = 0;
+          _this7.loader = 0;
         });
       }
     }
@@ -69000,7 +69045,45 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _vm._m(11)
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col-xs col col-sm col-md col-lg-3 col-xl-3 factor-main-inside-left"
+              },
+              [
+                _vm._m(11),
+                _vm._v(" "),
+                _vm._m(12),
+                _vm._v(" "),
+                _c("div", { staticClass: "god-end-name" }, [
+                  _vm._v(
+                    "\n                        (پارسیان تکثیر)\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "god-end-form" }, [
+                  _c("div", { staticClass: "god-end-form-top" }, [
+                    _c("span", [
+                      _vm._v(" تاریخ : "),
+                      _c("span", [_vm._v(_vm._s(_vm.currentDate))])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(13)
+                ]),
+                _vm._v(" "),
+                _vm._m(14),
+                _vm._v(" "),
+                _vm._m(15),
+                _vm._v(" "),
+                _vm._m(16),
+                _vm._v(" "),
+                _vm._m(17),
+                _vm._v(" "),
+                _vm._m(18)
+              ]
+            )
           ]
         )
       ]
@@ -69175,161 +69258,82 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "god-end-logo" }, [
+      _c("img", { attrs: { src: "img/logo/logo-inside.png" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "god-end-site" }, [
+      _c("span", { staticClass: "bold" }, [_vm._v(" www.parsiandigital.com  ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "god-end-form-bottom" }, [
+      _c("span", [_vm._v(" شماره سفارش : ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "god-end-mohr" }, [
+      _c("img", { attrs: { src: "/img/factor/back.png" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "god-end-mohr-span" }, [
+        _c("span", [_vm._v(" مهر و امضاء فروشنده ")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "god-end-address" }, [
+      _c("span", [
+        _vm._v(
+          " خیابان بزرگمهر / جنب خیابان آراسته / کوچه سرو (54) / ساختمان پارسیان "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "god-end-tell" }, [
+      _c("span", [_vm._v("  تلفن : 32683004 ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       {
         staticClass:
-          "col-xs col col-sm col-md col-lg-3 col-xl-3 factor-main-inside-left"
+          "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell"
       },
       [
-        _c("div", { staticClass: "god-end-logo" }, [
-          _c("img", { attrs: { src: "img/logo/logo-inside.png" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "god-end-site" }, [
-          _c("span", { staticClass: "bold" }, [
-            _vm._v(" www.parsiandigital.com  ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "god-end-name" }, [
-          _vm._v(
-            "\n                        (پارسیان تکثیر)\n                    "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "god-end-form" }, [
-          _c("div", { staticClass: "god-end-form-top" }, [
-            _c("span", [_vm._v(" تاریخ :  ")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "god-end-form-bottom" }, [
-            _c("span", [_vm._v(" شماره سفارش : ")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "god-end-mohr" }, [
-          _c("img", { attrs: { src: "img/factor/back.png" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "god-end-mohr-span" }, [
-            _c("span", [_vm._v(" مهر و امضاء فروشنده ")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "god-end-address" }, [
-          _c("span", [
-            _vm._v(
-              " خیابان بزرگمهر / جنب خیابان آراسته / کوچه سرو (54) / ساختمان پارسیان "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "god-end-tell" }, [
-          _c("span", [_vm._v("  تلفن : 32683004 ")])
-        ]),
-        _vm._v(" "),
         _c(
           "div",
           {
             staticClass:
-              "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell"
+              "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
           },
           [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
-              },
-              [
-                _c("span", [
-                  _vm._v("  چاپ دیجیتال  "),
-                  _c("span", { staticStyle: { "padding-right": "35px" } }, [
-                    _vm._v(" 09022683001")
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
-              },
-              [
-                _c("span", [
-                  _vm._v(" چاپ کتاب   "),
-                  _c("span", { staticStyle: { "padding-right": "50px" } }, [
-                    _vm._v(" 09022683002 ")
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
-              },
-              [
-                _c("span", [
-                  _vm._v(" چاپ عریض    "),
-                  _c("span", { staticStyle: { "padding-right": "40px" } }, [
-                    _vm._v(" 09022683003 ")
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
-              },
-              [
-                _c("span", [
-                  _vm._v(" چاپ افست  "),
-                  _c("span", { staticStyle: { "padding-right": "42px" } }, [
-                    _vm._v(" 09022683004 ")
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
-              },
-              [
-                _c("span", [
-                  _vm._v("  روابط عمومی    "),
-                  _c("span", { staticStyle: { "padding-right": "33px" } }, [
-                    _vm._v(" 09022683005 ")
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
-              },
-              [
-                _c("span", [
-                  _vm._v("  گروه طراحی  "),
-                  _c("span", { staticStyle: { "padding-right": "15px" } }, [
-                    _vm._v("10 - 09022683006  ")
-                  ])
-                ])
-              ]
-            )
+            _c("span", [
+              _vm._v("  چاپ دیجیتال  "),
+              _c("span", { staticStyle: { "padding-right": "35px" } }, [
+                _vm._v(" 09022683001")
+              ])
+            ])
           ]
         ),
         _vm._v(" "),
@@ -69337,14 +69341,97 @@ var staticRenderFns = [
           "div",
           {
             staticClass:
-              "col-xs col col-sm col-md col-lg col-xl-12 icon-telegram"
+              "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
           },
           [
-            _c("div", { staticClass: "icon-telegram-inside" }, [
-              _c("i", { staticClass: "fab fa-telegram-plane" })
+            _c("span", [
+              _vm._v(" چاپ کتاب   "),
+              _c("span", { staticStyle: { "padding-right": "50px" } }, [
+                _vm._v(" 09022683002 ")
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
+          },
+          [
+            _c("span", [
+              _vm._v(" چاپ عریض    "),
+              _c("span", { staticStyle: { "padding-right": "40px" } }, [
+                _vm._v(" 09022683003 ")
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
+          },
+          [
+            _c("span", [
+              _vm._v(" چاپ افست  "),
+              _c("span", { staticStyle: { "padding-right": "42px" } }, [
+                _vm._v(" 09022683004 ")
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
+          },
+          [
+            _c("span", [
+              _vm._v("  روابط عمومی    "),
+              _c("span", { staticStyle: { "padding-right": "33px" } }, [
+                _vm._v(" 09022683005 ")
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "col-xs col col-sm col-md col-lg col-xl-12 god-end-all-tell-inside"
+          },
+          [
+            _c("span", [
+              _vm._v("  گروه طراحی  "),
+              _c("span", { staticStyle: { "padding-right": "15px" } }, [
+                _vm._v("10 - 09022683006  ")
+              ])
             ])
           ]
         )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "col-xs col col-sm col-md col-lg col-xl-12 icon-telegram"
+      },
+      [
+        _c("div", { staticClass: "icon-telegram-inside" }, [
+          _c("i", { staticClass: "fab fa-telegram-plane" })
+        ])
       ]
     )
   }
@@ -71653,7 +71740,7 @@ var render = function() {
                               },
                               on: {
                                 click: function($event) {
-                                  return _vm.verify(ord.id)
+                                  return _vm.verify(ord)
                                 }
                               }
                             },
@@ -72203,60 +72290,67 @@ var render = function() {
                     [
                       _vm._m(2),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "col-xs col-sm col col-md col-lg col-xl-12 pay-inside-left-bottom-insidee flex"
-                        },
-                        [
-                          _vm._m(3),
-                          _vm._v(" "),
-                          _c(
+                      _vm.showCredit === 1
+                        ? _c(
                             "div",
                             {
                               staticClass:
-                                "col-xs col-sm col col-md col-lg col-xl-10 pay-inside-left-bottom-insidee-left"
+                                "col-xs col-sm col col-md col-lg col-xl-12 pay-inside-left-bottom-insidee flex"
                             },
                             [
-                              _c("a", { on: { click: _vm.credit_limit } }, [
-                                _c("input", {
-                                  attrs: {
-                                    type: "button",
-                                    value: "پرداخت از محل اعتبار"
-                                  }
-                                })
-                              ])
+                              _vm._m(3),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-xs col-sm col col-md col-lg col-xl-10 pay-inside-left-bottom-insidee-left"
+                                },
+                                [
+                                  _c("a", { on: { click: _vm.credit_limit } }, [
+                                    _c("input", {
+                                      attrs: {
+                                        type: "button",
+                                        value: "پرداخت از محل اعتبار"
+                                      }
+                                    })
+                                  ])
+                                ]
+                              )
                             ]
                           )
-                        ]
-                      ),
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "col-xs col-sm col col-md col-lg col-xl-12 pay-inside-left-bottom-insidee flex"
-                        },
-                        [
-                          _vm._m(4),
-                          _vm._v(" "),
-                          _c(
+                      _vm.showPrepayment === 1
+                        ? _c(
                             "div",
                             {
                               staticClass:
-                                "col-xs col-sm col col-md col-lg col-xl-10 pay-inside-left-bottom-insidee-left"
+                                "col-xs col-sm col col-md col-lg col-xl-12 pay-inside-left-bottom-insidee flex"
                             },
                             [
-                              _c("a", { on: { click: _vm.prepayment } }, [
-                                _c("input", {
-                                  attrs: { type: "button", value: "پیش پرداخت" }
-                                })
-                              ])
+                              _vm._m(4),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-xs col-sm col col-md col-lg col-xl-10 pay-inside-left-bottom-insidee-left"
+                                },
+                                [
+                                  _c("a", { on: { click: _vm.prepayment } }, [
+                                    _c("input", {
+                                      attrs: {
+                                        type: "button",
+                                        value: "پیش پرداخت"
+                                      }
+                                    })
+                                  ])
+                                ]
+                              )
                             ]
                           )
-                        ]
-                      ),
+                        : _vm._e(),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -72440,7 +72534,7 @@ var staticRenderFns = [
       },
       [
         _c("a", { attrs: { href: "#" } }, [
-          _c("img", { attrs: { src: "img/icon/img2.png" } })
+          _c("img", { attrs: { src: "/img/icon/img2.png" } })
         ])
       ]
     )
@@ -72455,11 +72549,7 @@ var staticRenderFns = [
         staticClass:
           "col-xs col-sm col col-md col-lg col-xl-2 pay-inside-left-bottom-insidee-right delete-padding"
       },
-      [
-        _c("a", { attrs: { href: "#" } }, [
-          _c("img", { attrs: { src: "img/icon/img2.png" } })
-        ])
-      ]
+      [_c("a", [_c("img", { attrs: { src: "/img/icon/img2.png" } })])]
     )
   },
   function() {

@@ -156,7 +156,7 @@ return [
             'zaringateApiPaymentUrl' => 'https://www.zarinpal.com/pg/StartPay/:authority/ZarinGate',
             'zaringateApiVerificationUrl' => 'https://ir.zarinpal.com/pg/services/WebGate/wsdl',
 
-            'mode' => 'sandbox', // can be normal, sandbox, zaringate
+            'mode' => 'normal', // can be normal, sandbox, zaringate
             'merchantId' => 'd6088642-012f-11ea-99d5-000c295eb8fc',
             'callbackUrl' => 'http://localhost:8000/zarinpal/callback',
             'description' => 'بروچاپ',

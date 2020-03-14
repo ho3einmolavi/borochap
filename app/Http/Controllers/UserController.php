@@ -431,9 +431,9 @@ class UserController extends Controller
         $validator = Validator::make($request->all() , [
             'first_name' => 'required' ,
             'last_name' => 'required' ,
-            'phone' => 'required|numeric' ,
-            'printing_office_number' => 'required' ,
-            'postal_code' => 'required|numeric' ,
+            'phone' => 'required|iran_mobile' ,
+            'printing_office_number' => 'required|numeric' ,
+            'postal_code' => 'required|numeric|max:10' ,
             'address' => 'required' ,
             'delivery' => 'required' ,
         ]);

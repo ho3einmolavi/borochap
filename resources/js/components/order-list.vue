@@ -54,7 +54,7 @@
                             <span class="text-span title-4"> {{ord.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان </span>
                         </div>
                         <div class="col-xs col col-sm col-md col-lg col-xl-2 table-data-feature flex">
-                            <a id="" v-on:click="verify(ord.id)"  class="item confirm" data-toggle="tooltip" data-placement="top" title="" data-original-title="تایید">
+                            <a id="" v-on:click="verify(ord)"  class="item confirm" data-toggle="tooltip" data-placement="top" title="" data-original-title="تایید">
                                 <i class="fas fa-check"></i>
                             </a>
                             <a id="error2" class="item delete" v-on:click="delete_order(ord.id)" data-toggle="tooltip" data-placement="top" title="" data-original-title="حذف ">
@@ -119,7 +119,27 @@
                         console.log(err.response)
                     })
             } ,
-
+            sendMessage(order) {
+                axios({
+                    url: '/api/sendMessage' ,
+                    method: 'post' ,
+                    data: {
+                        phone: order.user.phone ,
+                        code: order.code ,
+                        template: 'BRverify1'
+                    } ,
+                    headers: {
+                        Accept: 'application/json' ,
+                        Authorization: `Bearer ${localStorage.token}`
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                    })
+            } ,
             search() {
                 axios({
                     url: `/api/search/orders/code` ,
@@ -154,13 +174,14 @@
                         })
                 }
             } ,
-            verify(id) {
+            verify(ord) {
                 axios({
-                    url: `/api/order/${id}/verify` ,
+                    url: `/api/order/${ord.id}/verify` ,
                     method: 'get'
                 })
                     .then(res => {
                         console.log(res);
+                        this.sendMessage(ord);
                         this.get_orders();
                     })
                     .catch(err => {

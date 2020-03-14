@@ -50,7 +50,6 @@ class FileController extends Controller
         $valid = Validator::make($request->all() , [
             'pages' => 'required|mimes:pdf|max:40960' ,
             'cover' => 'required|max:20480' ,
-//            'license' => 'image' ,
             'title' => 'required' ,
         ]);
 

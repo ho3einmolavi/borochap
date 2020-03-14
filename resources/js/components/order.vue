@@ -94,9 +94,9 @@
                         <!---->
 
                         <!---->
-                        <div class="col-xs col-sm col col-md col-lg col-xl-12 pay-inside-left-bottom-insidee flex">
+                        <div v-if="showCredit === 1" class="col-xs col-sm col col-md col-lg col-xl-12 pay-inside-left-bottom-insidee flex">
                             <div class="col-xs col-sm col col-md col-lg col-xl-2 pay-inside-left-bottom-insidee-right delete-padding">
-                                <a href="#"><img src="img/icon/img2.png"></a>
+                                <a href="#"><img src="/img/icon/img2.png"></a>
                             </div>
                             <div class="col-xs col-sm col col-md col-lg col-xl-10 pay-inside-left-bottom-insidee-left">
                                 <a @click="credit_limit"><input type="button" value="پرداخت از محل اعتبار"></a>
@@ -104,9 +104,9 @@
                         </div>
 
 
-                        <div class="col-xs col-sm col col-md col-lg col-xl-12 pay-inside-left-bottom-insidee flex">
+                        <div v-if="showPrepayment === 1" class="col-xs col-sm col col-md col-lg col-xl-12 pay-inside-left-bottom-insidee flex">
                             <div class="col-xs col-sm col col-md col-lg col-xl-2 pay-inside-left-bottom-insidee-right delete-padding">
-                                <a href="#"><img src="img/icon/img2.png"></a>
+                                <a><img src="/img/icon/img2.png"></a>
                             </div>
                             <div class="col-xs col-sm col col-md col-lg col-xl-10 pay-inside-left-bottom-insidee-left">
                                 <a @click="prepayment"><input type="button" value="پیش پرداخت"></a>
@@ -268,7 +268,7 @@
         mounted() {
             console.log('pay');
             this.cal();
-           // this.getData();
+            this.check_user();
         } ,
 
         data() {
@@ -284,11 +284,36 @@
                 price0: '' ,
                 price1: '' ,
                 price2: '' ,
+                showCredit: 0 ,
+                showPrepayment: 0 ,
             }
         } ,
 
 
         methods:{
+            check_user() {
+                axios({
+                    url:'/api/user' ,
+                    method: 'get' ,
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        if (res.data.credit_limit)
+                        {
+                           this.showCredit = 1
+                        }
+                        if (res.data.prepayment)
+                        {
+                            this.showPrepayment = 1
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                    })
+            } ,
             prepayment() {
                 axios({
                     url:'/api/use/prepayment' ,

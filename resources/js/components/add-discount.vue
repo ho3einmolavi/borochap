@@ -5,10 +5,6 @@
                 <div class="admin-form col-xs col col-sm col-md col-lg col-xl-8">
                     <form class="needs-validation" novalidate="">
 
-
-
-
-
                         <div class="form-group col-xs col col-sm col-md col-lg col-xl-12">
                             <label for="inputname">کد تخفیف</label>
                             <input type="text" v-model="name" class="form-control" id="inputname" placeholder="شناسه را وارد کنید">
