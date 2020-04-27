@@ -156,7 +156,7 @@
 <!------>
                     <div class="form-group col-xs col col-sm col-md col-lg col-xl-11 flex">
                         <label for="inputname7" class="text-purple-input">  نحوه محاسبه قیمت </label>
-                        <select id="inputname7" class="form-control form-option select-size color-border">
+                        <select id="inputname7" v-model="without_paper" class="form-control form-option select-size color-border">
                             <option selected="" class="opti" value="0">  همراه با کاغذ </option>
                             <option value="1"> بدون کاغذ  </option>
                         </select>
@@ -229,19 +229,33 @@
                 cover_material: 'سلفون براق' ,
                 sizes1 : [] ,
                 materials1: [] ,
-                final: []
+                final: [] ,
+                without_paper: 0
             }
         } ,
         methods:{
             final_cost() {
                 this.loader = 1;
                 this.ok = 1;
+                let headers = {};
+                if (localStorage.token)
+                {
+                    headers = {
+                        accept: 'application/json' ,
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                }
+                else
+                {
+                    headers = {
+                        accept: 'application/json' ,
+                    }
+                }
+
                 axios({
-                        url: '/api/Cal' ,
+                    url: '/api/Cal' ,
                     method: 'post' ,
-                    headers: {
-                        accept: 'application/json'
-                    } ,
+                    headers: headers ,
                     data:{
                         one_color_toner: this.one_color_toner ,
                         circulation: this.circulation ,
@@ -256,6 +270,7 @@
                         colorful_toner: this.colorful_toner ,
                         cover_type: this.cover_type ,
                         cover_material: this.cover_material ,
+                        without_paper: this.without_paper
                     }
                 })
                     .then(res => {

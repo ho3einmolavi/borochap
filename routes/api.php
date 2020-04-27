@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 $middleware = ['api'];
-if ((new Illuminate\Http\Request)->header('Authorization'))
+if (\request()->header('Authorization'))
     $middleware = array_merge(['auth:api']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -36,7 +36,7 @@ Route::post('/ColorfulProfit' , 'ColorfulProfitMarginController@create');
 Route::post('/ColorfulToner' , 'ColorfulPrintingCostController@create');
 Route::post('/CoverCost' , 'CoverCostController@create');
 Route::post('/BindingCost' , 'BindingController@create');
-Route::post('/Cal' , 'CalculationController@create');
+Route::post('/Cal' , 'CalculationController@create')->middleware($middleware);
 Route::get('/index/sizes' , 'SizeController@index');
 Route::get('/index/materials' , 'MaterialController@index');
 Route::get('/pay/verify' , 'PayController@zarinPal_verify');

@@ -3049,8 +3049,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('factor mounted.');
@@ -3578,7 +3576,8 @@ __webpack_require__.r(__webpack_exports__);
       cover_material: 'سلفون براق',
       sizes1: [],
       materials1: [],
-      "final": []
+      "final": [],
+      without_paper: 0
     };
   },
   methods: {
@@ -3587,12 +3586,23 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loader = 1;
       this.ok = 1;
+      var headers = {};
+
+      if (localStorage.token) {
+        headers = {
+          accept: 'application/json',
+          Authorization: "Bearer ".concat(localStorage.getItem('token'))
+        };
+      } else {
+        headers = {
+          accept: 'application/json'
+        };
+      }
+
       axios({
         url: '/api/Cal',
         method: 'post',
-        headers: {
-          accept: 'application/json'
-        },
+        headers: headers,
         data: {
           one_color_toner: this.one_color_toner,
           circulation: this.circulation,
@@ -3606,7 +3616,8 @@ __webpack_require__.r(__webpack_exports__);
           colorful_number: this.colorful_number,
           colorful_toner: this.colorful_toner,
           cover_type: this.cover_type,
-          cover_material: this.cover_material
+          cover_material: this.cover_material,
+          without_paper: this.without_paper
         }
       }).then(function (res) {
         console.log(res);
@@ -70915,7 +70926,69 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(1),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "form-group col-xs col col-sm col-md col-lg col-xl-11 flex"
+                  },
+                  [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "text-purple-input",
+                        attrs: { for: "inputname7" }
+                      },
+                      [_vm._v("  نحوه محاسبه قیمت ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.without_paper,
+                            expression: "without_paper"
+                          }
+                        ],
+                        staticClass:
+                          "form-control form-option select-size color-border",
+                        attrs: { id: "inputname7" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.without_paper = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            staticClass: "opti",
+                            attrs: { selected: "", value: "0" }
+                          },
+                          [_vm._v("  همراه با کاغذ ")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v(" بدون کاغذ  ")
+                        ])
+                      ]
+                    )
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -71113,41 +71186,6 @@ var staticRenderFns = [
                 _vm._v("   محاسبه قیمت ")
               ])
             ])
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "form-group col-xs col col-sm col-md col-lg col-xl-11 flex"
-      },
-      [
-        _c(
-          "label",
-          { staticClass: "text-purple-input", attrs: { for: "inputname7" } },
-          [_vm._v("  نحوه محاسبه قیمت ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control form-option select-size color-border",
-            attrs: { id: "inputname7" }
-          },
-          [
-            _c(
-              "option",
-              { staticClass: "opti", attrs: { selected: "", value: "0" } },
-              [_vm._v("  همراه با کاغذ ")]
-            ),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v(" بدون کاغذ  ")])
           ]
         )
       ]

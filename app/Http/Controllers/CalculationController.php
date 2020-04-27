@@ -61,7 +61,7 @@ class CalculationController extends Controller
         if ($price)
         {
             $price = $price->price;
-            $one_color_paper_cost =$price * ($request->one_color_number/2);
+            $one_color_paper_cost = $price * ($request->one_color_number/2);
             $colorful_paper_cost = $price * ($request->colorful_number/2);
         }
         else {
@@ -88,8 +88,6 @@ class CalculationController extends Controller
             'binding_cost' => $res5['cost']
         ];
 
-
-
         $cost = array_values($calculation);
         $book_price = round(array_sum($cost));
         $book_price = $book_price - ($book_price % 10);
@@ -112,7 +110,6 @@ class CalculationController extends Controller
 //        ]);
 
          $order = [
-
            // 'calculation_id' => $calculation->id ,
             'size' => $request->size ,
             'circulation' => $request->circulation ,
@@ -131,6 +128,28 @@ class CalculationController extends Controller
             'final_price' => round($final_price) ,
             'date' => Jalalian::forge('now')->format('Y/m/d')
         ];
+
+         if ($request->without_paper == 1)
+         {
+             if (\auth()->user())
+             {
+                 if (auth()->user()->exclusiveDiscount)
+                 {
+                     $amount = auth()->user()->exclusiveDiscount->amount;
+                     $papersCost = ($colorful_paper_cost + $one_color_paper_cost) * $request->circulation * 0.9;
+                     $order['final_price'] = ($order['final_price'] - $papersCost) * (100 - $amount)/100;
+                 }
+                 else {
+                     $papersCost = ($colorful_paper_cost + $one_color_paper_cost) * $request->circulation * 0.9;
+                     $order['final_price'] = ($order['final_price'] - $papersCost);
+                 }
+             }
+             else
+             {
+                 $papersCost = ($colorful_paper_cost + $one_color_paper_cost) * $request->circulation * 0.9;
+                 $order['final_price'] = ($order['final_price'] - $papersCost);
+             }
+         }
 
         return response()->json($order);
 

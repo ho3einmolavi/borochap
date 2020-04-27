@@ -17,14 +17,14 @@
                                         <span class="color-factor">  خریدار : {{data2.first_name}} {{data2.last_name}} </span>
                                     </div>-->
                                     <!--jadid-->
-<div class="col-xs col col-sm col-md col-lg col-xl-12 Buyer-all flex">
-  <div class="col-xs col col-sm col-md col-lg col-xl-9 Buyer-all-right">
-  <span class="color-factor">  خریدار : {{data2.first_name}} {{data2.last_name}} </span>
-</div>
-    <div class="col-xs col col-sm col-md col-lg col-xl-3 Buyer-all-left">
-  <span class="color-factor">  تاریخ  : 27/11/1398 </span>
-</div>
-</div>
+                                <div class="col-xs col col-sm col-md col-lg col-xl-12 Buyer-all flex">
+                                  <div class="col-xs col col-sm col-md col-lg col-xl-9 Buyer-all-right">
+                                  <span class="color-factor">  خریدار : {{data2.first_name}} {{data2.last_name}} </span>
+                                </div>
+                                    <div class="col-xs col col-sm col-md col-lg col-xl-3 Buyer-all-left">
+                                     <span class="color-factor">  تاریخ  : 27/11/1398 </span>
+                                </div>
+                                </div>
                                     <!--end-jadid-->
                                     <!--<div class="col-xs col col-sm col-md col-lg col-xl-12 Buyer-all-res">-->
                                         <!--<span class="color-factor">  خریدار :</span>-->
@@ -47,8 +47,6 @@
                                     <div class="col-xs col col-sm col-md col-lg col-xl-12 address-all-res">
                                         <span class="color-factor">  آدرس : {{data2.address}} </span>
                                     </div>
-
-
 
                                 </div>
                                 <div class="col-xs col col-sm col-md col-lg col-xl-6 factor-main-inside-top-subject-all-left delete-padding">
