@@ -5842,17 +5842,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('update variables mounted.');
     this.show();
+    this.sizes();
   },
   data: function data() {
     return {
+      size: '',
+      hazine_jeld_selefon: '',
+      size_hazine_jeld_selefon: [],
       variable: {
         chasbe_garm: '',
         fanar_zani: '',
-        hazine_jeld_selefon: '',
+        hazine_jeld_selefon: [],
         jame_estelake_meshki: '',
         jelde_sakht: '',
         koliye_gelaseha: '',
@@ -5867,12 +5888,47 @@ __webpack_require__.r(__webpack_exports__);
       },
       ok: '',
       error: [],
-      variables: []
+      variables: [],
+      sizes_list: []
     };
   },
   methods: {
-    delete_var: function delete_var(table, id) {
+    add_hazine_jeld_selefon: function add_hazine_jeld_selefon(key, value) {
+      var array = {};
+      var flag = 0;
+      array['id'] = key;
+      array['price'] = value;
+      this.size_hazine_jeld_selefon.forEach(function (item) {
+        if (item.id === key) {
+          item.price = value;
+          flag = 1;
+        }
+      });
+
+      if (flag === 1) {
+        this.variable[0].hazine_jeld_selefon = this.size_hazine_jeld_selefon;
+      } else {
+        this.size_hazine_jeld_selefon.push(array);
+        this.variable[0].hazine_jeld_selefon = this.size_hazine_jeld_selefon;
+      }
+    },
+    sizes: function sizes() {
       var _this = this;
+
+      axios({
+        url: '/api/index/sizes',
+        method: 'get',
+        headers: {
+          accept: 'application/json'
+        }
+      }).then(function (res) {
+        _this.sizes_list = res.data;
+      })["catch"](function (err) {
+        return console.log(err.response);
+      });
+    },
+    delete_var: function delete_var(table, id) {
+      var _this2 = this;
 
       axios({
         url: "/api/".concat(table, "/").concat(id, "/delete"),
@@ -5883,49 +5939,64 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         console.log(res);
 
-        _this.show();
+        _this2.show();
       })["catch"](function (err) {
         return console.log(err.response);
       });
     },
     add_variable: function add_variable() {
-      var _this2 = this;
+      var _this3 = this;
 
-      axios({
-        url: '/api/create/variables',
-        method: 'post',
-        headers: {
-          accept: 'application/json'
-        },
-        data: {
-          chasbe_garm: this.variable[0].chasbe_garm,
-          fanar_zani: this.variable[0].fanar_zani,
-          hazine_jeld_selefon: this.variable[0].hazine_jeld_selefon,
-          jame_estelake_meshki: this.variable[0].jame_estelake_meshki,
-          jelde_sakht: this.variable[0].jelde_sakht,
-          koliye_gelaseha: this.variable[0].koliye_gelaseha,
-          koliye_tahrirha: this.variable[0].koliye_tahrirha,
-          mangane_zani: this.variable[0].mangane_zani,
-          sude_morede_nazar: this.variable[0].sude_morede_nazar,
-          toner_matn_meshki: this.variable[0].toner_matn_meshki,
-          toner_rangi_estelak: this.variable[0].toner_rangi_estelak,
-          toner_rangi_matn: this.variable[0].toner_rangi_matn,
-          toner_rangi_matn_tasvir: this.variable[0].toner_rangi_matn_tasvir,
-          toner_rangi_tasvir: this.variable[0].toner_rangi_tasvir
-        }
-      }).then(function (res) {
-        console.log(res);
-        _this2.ok = 1;
-
-        _this2.show();
-      })["catch"](function (err) {
-        console.log(err.response);
-        _this2.ok = 0;
-        _this2.error = err.response.data;
+      var flag = 0;
+      this.size_hazine_jeld_selefon.forEach(function (item) {
+        _this3.sizes_list.forEach(function (item1) {
+          if (item1.id === item.id) {
+            flag = 1;
+          }
+        });
       });
+
+      if (flag === 0) {
+        this.$swal('برای همه سایز ها قیمت جلد و سلفون انتخاب نشده !', '', 'error');
+      }
+
+      if (flag === 1) {
+        axios({
+          url: '/api/create/variables',
+          method: 'post',
+          headers: {
+            accept: 'application/json'
+          },
+          data: {
+            chasbe_garm: this.variable[0].chasbe_garm,
+            fanar_zani: this.variable[0].fanar_zani,
+            hazine_jeld_selefon: this.variable[0].hazine_jeld_selefon,
+            jame_estelake_meshki: this.variable[0].jame_estelake_meshki,
+            jelde_sakht: this.variable[0].jelde_sakht,
+            koliye_gelaseha: this.variable[0].koliye_gelaseha,
+            koliye_tahrirha: this.variable[0].koliye_tahrirha,
+            mangane_zani: this.variable[0].mangane_zani,
+            sude_morede_nazar: this.variable[0].sude_morede_nazar,
+            toner_matn_meshki: this.variable[0].toner_matn_meshki,
+            toner_rangi_estelak: this.variable[0].toner_rangi_estelak,
+            toner_rangi_matn: this.variable[0].toner_rangi_matn,
+            toner_rangi_matn_tasvir: this.variable[0].toner_rangi_matn_tasvir,
+            toner_rangi_tasvir: this.variable[0].toner_rangi_tasvir
+          }
+        }).then(function (res) {
+          console.log(res);
+          _this3.ok = 1;
+
+          _this3.show();
+        })["catch"](function (err) {
+          console.log(err.response);
+          _this3.ok = 0;
+          _this3.error = err.response.data;
+        });
+      }
     },
     show: function show() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios({
         url: '/api/show/variables',
@@ -5935,14 +6006,13 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (res) {
         console.log(res);
-        _this3.variables = res.data;
-        _this3.variable = _this3.variables;
-        console.log(_this3.variable);
-        console.log(_this3.variables);
+        _this4.variables = res.data;
+        _this4.variable = _this4.variables;
+        _this4.size_hazine_jeld_selefon = JSON.parse(_this4.variable[0].hazine_jeld_selefon);
       })["catch"](function (err) {
         console.log(err.response);
-        _this3.ok = 0;
-        _this3.error = err.response.data;
+        _this4.ok = 0;
+        _this4.error = err.response.data;
       });
     }
   }
@@ -76102,36 +76172,114 @@ var render = function() {
                     "div",
                     {
                       staticClass:
-                        "form-group col-xs col col-sm col-md col-lg col-xl-12"
+                        "form-group col-xs col col-sm- col-md col-lg col-xl-12 flex"
                     },
                     [
-                      _c("label", { attrs: { for: "inputname10" } }, [
-                        _vm._v("هزینه جلد + سلفون رحلی")
-                      ]),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "form-group col-xs col col-sm- col-md col-lg col-xl-3"
+                        },
+                        [
+                          _c("label", { attrs: { for: "inputState" } }, [
+                            _vm._v("  انتخاب سایز ")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.size,
+                                  expression: "size"
+                                }
+                              ],
+                              staticClass:
+                                "form-control form-option select-size",
+                              attrs: { id: "inputState" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.size = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                }
+                              }
+                            },
+                            _vm._l(_vm.sizes_list, function(item) {
+                              return _c(
+                                "option",
+                                {
+                                  staticClass: "opti",
+                                  attrs: { selected: "" },
+                                  domProps: { value: item }
+                                },
+                                [_vm._v("  " + _vm._s(item.name) + "  ")]
+                              )
+                            }),
+                            0
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "form-group col-xs col col-sm- col-md col-lg col-xl-3"
+                        },
+                        [
+                          _c("label", { attrs: { for: "inputname2" } }, [
+                            _vm._v(" قیمت جلد + سلفون")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.hazine_jeld_selefon,
+                                expression: "hazine_jeld_selefon"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "number",
+                              id: "inputname2",
+                              placeholder: "قیمت را وارد کنید"
+                            },
+                            domProps: { value: _vm.hazine_jeld_selefon },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.hazine_jeld_selefon = $event.target.value
+                              }
+                            }
+                          })
+                        ]
+                      ),
                       _vm._v(" "),
                       _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.variable[0].hazine_jeld_selefon,
-                            expression: "variable[0].hazine_jeld_selefon"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", id: "inputname10" },
-                        domProps: {
-                          value: _vm.variable[0].hazine_jeld_selefon
-                        },
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button", value: "افزودن" },
                         on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.variable[0],
-                              "hazine_jeld_selefon",
-                              $event.target.value
+                          click: function($event) {
+                            return _vm.add_hazine_jeld_selefon(
+                              _vm.size.id,
+                              _vm.hazine_jeld_selefon
                             )
                           }
                         }

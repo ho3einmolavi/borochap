@@ -59,9 +59,26 @@
                             <input type="text" v-model="variable[0].toner_rangi_estelak" class="form-control" id="inputname10" >
                         </div>
 
-                        <div class="form-group col-xs col col-sm col-md col-lg col-xl-12">
-                            <label for="inputname10">هزینه جلد + سلفون رحلی</label>
-                            <input type="text" v-model="variable[0].hazine_jeld_selefon" class="form-control" id="inputname10" >
+                        <!--<div class="form-group col-xs col col-sm col-md col-lg col-xl-12">-->
+                            <!--<label for="inputname10">هزینه جلد + سلفون رحلی</label>-->
+                            <!--<input type="text" v-model="variable[0].hazine_jeld_selefon" class="form-control" id="inputname10" >-->
+                        <!--</div>-->
+
+                        <div class="form-group col-xs col col-sm- col-md col-lg col-xl-12 flex">
+
+                            <div class="form-group col-xs col col-sm- col-md col-lg col-xl-3">
+                                <label for="inputState">  انتخاب سایز </label>
+                                <select id="inputState" v-model="size"  class="form-control form-option select-size">
+                                    <option selected="" v-for="item in sizes_list" :value="item" class="opti">  {{ item.name }}  </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-xs col col-sm- col-md col-lg col-xl-3">
+                                <label for="inputname2"> قیمت جلد + سلفون</label>
+                                <input type="number" v-model="hazine_jeld_selefon" class="form-control" id="inputname2" placeholder="قیمت را وارد کنید">
+                            </div>
+                            <input type="button" @click="add_hazine_jeld_selefon(size.id , hazine_jeld_selefon)" value="افزودن" class="btn btn-primary">
+
                         </div>
 
 
@@ -150,14 +167,18 @@
         mounted() {
             console.log('update variables mounted.');
             this.show();
+            this.sizes();
         },
 
         data() {
             return {
+                size: '' ,
+                hazine_jeld_selefon: '' ,
+                size_hazine_jeld_selefon: [] ,
                 variable: {
                     chasbe_garm: '' ,
                     fanar_zani: '' ,
-                    hazine_jeld_selefon: '' ,
+                    hazine_jeld_selefon: [] ,
                     jame_estelake_meshki: '' ,
                     jelde_sakht: '' ,
                     koliye_gelaseha: '' ,
@@ -172,11 +193,49 @@
                 } ,
                 ok: '' ,
                 error: [] ,
-                variables: []
+                variables: [] ,
+                sizes_list: []
             }
         } ,
 
         methods: {
+            add_hazine_jeld_selefon(key , value) {
+                let array = {};
+                let flag = 0;
+                array['id'] = key;
+                array['price'] = value;
+                this.size_hazine_jeld_selefon.forEach(item => {
+                    if (item.id === key)
+                    {
+                        item.price = value;
+                        flag = 1
+                    }
+                });
+
+                if (flag === 1)
+                {
+                    this.variable[0].hazine_jeld_selefon = this.size_hazine_jeld_selefon;
+                }
+                else
+                {
+                    this.size_hazine_jeld_selefon.push(array);
+                    this.variable[0].hazine_jeld_selefon = this.size_hazine_jeld_selefon;
+                }
+
+            } ,
+            sizes() {
+                axios({
+                    url: '/api/index/sizes' ,
+                    method: 'get' ,
+                    headers: {
+                        accept: 'application/json'
+                    } ,
+                })
+                    .then(res => {
+                        this.sizes_list = res.data;
+                    })
+                    .catch(err => console.log(err.response))
+            } ,
             delete_var(table , id) {
                 axios({
                     url: `/api/${table}/${id}/delete` ,
@@ -192,41 +251,59 @@
                     .catch(err => console.log(err.response))
             } ,
             add_variable(){
-                axios({
-                    url: '/api/create/variables' ,
-                    method: 'post' ,
-                    headers: {
-                        accept: 'application/json'
-                    } ,
-                    data: {
-                        chasbe_garm: this.variable[0].chasbe_garm ,
-                        fanar_zani: this.variable[0].fanar_zani ,
-                        hazine_jeld_selefon:  this.variable[0].hazine_jeld_selefon ,
-                        jame_estelake_meshki:  this.variable[0].jame_estelake_meshki ,
-                        jelde_sakht:  this.variable[0].jelde_sakht ,
-                        koliye_gelaseha:  this.variable[0].koliye_gelaseha ,
-                        koliye_tahrirha:  this.variable[0].koliye_tahrirha ,
-                        mangane_zani:  this.variable[0].mangane_zani ,
-                        sude_morede_nazar:  this.variable[0].sude_morede_nazar ,
-                        toner_matn_meshki:  this.variable[0].toner_matn_meshki ,
-                        toner_rangi_estelak:  this.variable[0].toner_rangi_estelak ,
-                        toner_rangi_matn:  this.variable[0].toner_rangi_matn ,
-                        toner_rangi_matn_tasvir:  this.variable[0].toner_rangi_matn_tasvir ,
-                        toner_rangi_tasvir:  this.variable[0].toner_rangi_tasvir ,
-                    }
-                })
-                    .then(res => {
-                        console.log(res);
-                        this.ok = 1;
-                        this.show();
+                let flag = 0;
+                this.size_hazine_jeld_selefon.forEach(item => {
+                   this.sizes_list.forEach(item1 =>{
+                       if (item1.id === item.id)
+                       {
+                           flag = 1;
+                       }
+                   })
+                });
+
+                if (flag === 0)
+                {
+                    this.$swal('برای همه سایز ها قیمت جلد و سلفون انتخاب نشده !' , '' , 'error');
+                }
+
+                if (flag === 1)
+                {
+                    axios({
+                        url: '/api/create/variables' ,
+                        method: 'post' ,
+                        headers: {
+                            accept: 'application/json'
+                        } ,
+                        data: {
+                            chasbe_garm: this.variable[0].chasbe_garm ,
+                            fanar_zani: this.variable[0].fanar_zani ,
+                            hazine_jeld_selefon:  this.variable[0].hazine_jeld_selefon ,
+                            jame_estelake_meshki:  this.variable[0].jame_estelake_meshki ,
+                            jelde_sakht:  this.variable[0].jelde_sakht ,
+                            koliye_gelaseha:  this.variable[0].koliye_gelaseha ,
+                            koliye_tahrirha:  this.variable[0].koliye_tahrirha ,
+                            mangane_zani:  this.variable[0].mangane_zani ,
+                            sude_morede_nazar:  this.variable[0].sude_morede_nazar ,
+                            toner_matn_meshki:  this.variable[0].toner_matn_meshki ,
+                            toner_rangi_estelak:  this.variable[0].toner_rangi_estelak ,
+                            toner_rangi_matn:  this.variable[0].toner_rangi_matn ,
+                            toner_rangi_matn_tasvir:  this.variable[0].toner_rangi_matn_tasvir ,
+                            toner_rangi_tasvir:  this.variable[0].toner_rangi_tasvir ,
+                        }
                     })
-                    .catch(err => {
-                        console.log(err.response);
-                        this.ok = 0;
-                        this.error = err.response.data
-                    })
+                        .then(res => {
+                            console.log(res);
+                            this.ok = 1;
+                            this.show();
+                        })
+                        .catch(err => {
+                            console.log(err.response);
+                            this.ok = 0;
+                            this.error = err.response.data
+                        })
+                }
             } ,
-           show() {
+            show() {
                axios({
                    url: '/api/show/variables' ,
                    method: 'get' ,
@@ -238,8 +315,7 @@
                         console.log(res);
                        this.variables = res.data;
                        this.variable = this.variables;
-                       console.log(this.variable)
-                       console.log(this.variables)
+                       this.size_hazine_jeld_selefon = JSON.parse(this.variable[0].hazine_jeld_selefon);
                    })
                    .catch(err => {
                        console.log(err.response);

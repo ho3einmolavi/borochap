@@ -26,8 +26,17 @@ class CoverCostController extends Controller
 
         $costs = Variable::orderBy('id' , 'DESC')->firstOrFail();
 
-        $desired = $costs->hazine_jeld_selefon;
+        $prices = $costs->hazine_jeld_selefon;
         $size = Size::where('name' , $request->size)->firstOrFail();
+        $prices = json_decode($prices);
+        $desired = null;
+        foreach ($prices as $price)
+        {
+            if ($price->id == $size->id)
+            {
+                $desired = $price->price;
+            }
+        }
 
         if ($request->thickness == 200)
         {
@@ -107,30 +116,30 @@ class CoverCostController extends Controller
         }
 
         $finalCost = ($desired * $discount * $edge * $thick);
-        if ($size->surface == 0.0408)
-        {
-            $finalCost = ($finalCost * 0.85);
-        }
-        else if ($size->surface == 0.0319 || $size->surface == 0.029725)
-        {
-            $finalCost = ($finalCost * 0.61625);
-        }
-        else if($size->surface == 0.0225)
-        {
-            $finalCost = ($finalCost * 0.4128875);
-        }
-        else if($size->surface == 0.0361)
-        {
-            $finalCost = ($finalCost * 0.5695);
-        }
-        else if($size->surface == 0.0231)
-        {
-            $finalCost = (($finalCost * 0.85) / 2);
-        }
-        else if($size->surface == 0.0204)
-        {
-            $finalCost = (($finalCost * 0.85) / 2);
-        }
+//        if ($size->surface == 0.0408)
+//        {
+//            $finalCost = ($finalCost * 0.85);
+//        }
+//        else if ($size->surface == 0.0319 || $size->surface == 0.029725)
+//        {
+//            $finalCost = ($finalCost * 0.61625);
+//        }
+//        else if($size->surface == 0.0225)
+//        {
+//            $finalCost = ($finalCost * 0.4128875);
+//        }
+//        else if($size->surface == 0.0361)
+//        {
+//            $finalCost = ($finalCost * 0.5695);
+//        }
+//        else if($size->surface == 0.0231)
+//        {
+//            $finalCost = (($finalCost * 0.85) / 2);
+//        }
+//        else if($size->surface == 0.0204)
+//        {
+//            $finalCost = (($finalCost * 0.85) / 2);
+//        }
 
         if ($request->cover_type == 'دو رو')
         {

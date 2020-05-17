@@ -24,7 +24,7 @@ class CreateVariablesTable extends Migration
             $table->string('toner_rangi_matn_tasvir')->nullable();
             $table->string('toner_rangi_tasvir')->nullable();
             $table->string('toner_rangi_estelak')->nullable();
-            $table->string('hazine_jeld_selefon')->nullable();
+            $table->text('hazine_jeld_selefon')->nullable();
             $table->string('chasbe_garm')->nullable();
             $table->string('jelde_sakht')->nullable();
             $table->string('fanar_zani')->nullable();
