@@ -69,6 +69,7 @@ class CalculationController extends Controller
         }
 
 
+
         $res = $this->getOneColorPrintingCost($request);
         $res1 = $this->getOneColorProfitMargin($request);
         $res2 = $this->getColorfulPrintingCost($request);
@@ -79,38 +80,20 @@ class CalculationController extends Controller
 
         $calculation = [
             'one_color_paper_cost' => $one_color_paper_cost ,
-            'one_color_toner' => round((($res['cost'] * $size->surface) / 0.060475) * $request->one_color_number),
-            'one_color_profit' => round(($res1['final_profit'] * $size->surface) / 0.060475 ) * $request->one_color_number ,
+            'one_color_toner' => (($res['cost'] * $size->surface) / 0.060475) * $request->one_color_number,
+            'one_color_profit' => (($res1['final_profit'] * $size->surface) / 0.060475 ) * $request->one_color_number ,
             'colorful_paper_cost' => $colorful_paper_cost ,
-            'colorful_toner' => round(($res2['cost'] * $size->surface) / 0.060475) * $request->colorful_number ,
-            'colorful_profit' => round((($res3['final_profit'] * $size->surface) / 0.060475) * $request->colorful_number) ,
+            'colorful_toner' => (($res2['cost'] * $size->surface) / 0.060475) * $request->colorful_number ,
+            'colorful_profit' => (($res3['final_profit'] * $size->surface) / 0.060475) * $request->colorful_number ,
             'cover_cost' => $res4['final_cost'] ,
             'binding_cost' => $res5['cost']
         ];
 
         $cost = array_values($calculation);
-        $book_price = round(array_sum($cost));
-        $book_price = $book_price - ($book_price % 10);
+        $book_price = array_sum($cost);
         $final_price = $book_price * $request->circulation;
 
-
-//        $calculation = Calculation::create([
-//            'size_id' => $size->id ,
-//            'material_id' => $material->id ,
-//            'one_color_paper_cost' => $one_color_paper_cost ,
-//            'one_color_toner' => round((($res['cost'] * $size->surface) / 0.060475) * $request->one_color_number),
-//            'one_color_profit' => round(($res1['final_profit'] * $size->surface) / 0.060475 ) * $request->one_color_number ,
-//            'colorful_paper_cost' => $colorful_paper_cost ,
-//            'colorful_toner' => round(($res2['cost'] * $size->surface) / 0.060475) * $request->colorful_number ,
-//            'colorful_profit' => round((($res3['final_profit'] * $size->surface) / 0.060475) * $request->colorful_number) ,
-//            'cover_cost' => $res4['final_cost'] ,
-//            'binding_cost' => $res5['cost'] ,
-//            'book_cost' => $book_price,
-//            'final_price' => round($final_price)
-//        ]);
-
          $order = [
-           // 'calculation_id' => $calculation->id ,
             'size' => $request->size ,
             'circulation' => $request->circulation ,
             'material' => $request->material ,
@@ -124,7 +107,7 @@ class CalculationController extends Controller
             'cover_material' => $request->cover_material  ,
             'edge' => $request->edge  ,
             'Binding' => $request->Binding ,
-            'book_cost' => $book_price,
+            'book_cost' => round($book_price),
             'final_price' => round($final_price) ,
             'date' => Jalalian::forge('now')->format('Y/m/d')
         ];

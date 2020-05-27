@@ -102,7 +102,6 @@
                             <input type="text" v-model="variable[0].mangane_zani"  class="form-control" id="inputname10">
                         </div>
 
-
                         <div class="alert alert-danger form-group col-xs col col-sm col-md col-lg col-xl-12" v-if="ok === 0" role="alert" style="margin-top: 71px;height: auto;float: right">
                             {{error}}
                         </div>
