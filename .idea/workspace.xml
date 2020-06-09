@@ -4,7 +4,11 @@
     <list default="true" id="7f8692cf-6ee3-4abe-8630-db4bce8b6bd5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CalculationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CalculationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/update-variables.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/update-variables.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VariableController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VariableController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -245,9 +249,9 @@
     <session id="-746975775">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="30" />
+          <entry key="project.closed" value="36" />
           <entry key="project.open.time.0" value="4" />
-          <entry key="project.open.time.1" value="5" />
+          <entry key="project.open.time.1" value="8" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.2" value="4" />
           <entry key="project.open.time.22" value="1" />
@@ -256,58 +260,67 @@
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.31" value="1" />
+          <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.44" value="1" />
+          <entry key="project.open.time.46" value="1" />
           <entry key="project.open.time.47" value="1" />
           <entry key="project.open.time.49" value="2" />
+          <entry key="project.open.time.59" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="31" />
+          <entry key="project.opened" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="1" />
+          <entry key="css" value="3" />
+          <entry key="htaccess" value="1" />
           <entry key="html" value="7" />
           <entry key="ini" value="1" />
-          <entry key="js" value="4" />
+          <entry key="js" value="12" />
           <entry key="json" value="3" />
-          <entry key="php" value="94" />
+          <entry key="php" value="100" />
+          <entry key="png" value="1" />
           <entry key="vue" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="20" />
-          <entry key="CSS" value="1" />
+          <entry key="Blade" value="23" />
+          <entry key="CSS" value="3" />
           <entry key="HTML" value="7" />
+          <entry key="Image" value="1" />
           <entry key="Ini" value="1" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="4" />
-          <entry key="PHP" value="74" />
+          <entry key="JavaScript" value="12" />
+          <entry key="PHP" value="77" />
           <entry key="Vue.js" value="60" />
+          <entry key="htaccess" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="css" value="23" />
           <entry key="dummy" value="4" />
           <entry key="html" value="2" />
           <entry key="js" value="327" />
           <entry key="json" value="10" />
-          <entry key="php" value="5930" />
+          <entry key="php" value="6390" />
           <entry key="vue" value="6429" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="374" />
+          <entry key="Blade" value="380" />
+          <entry key="CSS" value="23" />
           <entry key="HTML" value="3" />
           <entry key="JSON" value="10" />
           <entry key="JavaScript" value="327" />
-          <entry key="PHP" value="5556" />
+          <entry key="PHP" value="6010" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="Vue.js" value="6428" />
         </counts>
@@ -317,83 +330,78 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/setting.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
-              <caret line="157" column="28" selection-start-line="157" selection-start-column="28" selection-end-line="157" selection-end-column="86" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/add-price.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="992">
-              <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="34" selection-end-column="30" />
-              <folding>
-                <element signature="e#3832#4286#0" />
-                <element signature="e#4307#4756#0" />
-                <element signature="e#4778#5233#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/add-size.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="32" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/api.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-              <folding>
-                <element signature="e#7#35#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/resources/views/layout/header.blade.php">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CalculationController.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="94" column="8" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
+            <state relative-caret-position="436">
+              <caret line="443" selection-start-line="443" selection-end-line="443" />
+              <folding>
+                <element signature="e#464#1279#0#PHP" />
+                <element signature="e#1285#2445#0#PHP" />
+                <element signature="e#2451#3070#0#PHP" />
+                <element signature="e#3076#4096#0#PHP" />
+                <element signature="e#4102#4994#0#PHP" />
+                <element signature="e#5000#5106#0#PHP" />
+                <element signature="e#5112#7961#0#PHP" />
+                <element signature="e#7967#8609#0#PHP" />
+                <element signature="e#8615#10037#0#PHP" />
+                <element signature="e#10043#10924#0#PHP" />
+                <element signature="e#10930#11782#0#PHP" />
+                <element signature="e#11788#12019#0#PHP" />
+                <element signature="e#12025#12293#0#PHP" />
+                <element signature="e#13395#13753#0#PHP" />
+                <element signature="e#13759#14236#0#PHP" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BindingController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-372">
-              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+            <state relative-caret-position="1860">
+              <caret line="60" column="76" selection-start-line="60" selection-start-column="76" selection-end-line="60" selection-end-column="76" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MonochromePrintingCostController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-713">
-              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/public/js/index.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/main.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="252" column="17" selection-start-line="252" selection-start-column="17" selection-end-line="252" selection-end-column="17" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/public/js/access.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/access1.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/axios.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/bootstrap.min.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/contact.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/footer.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -409,12 +417,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>delete</find>
-      <find>expire</find>
-      <find>header-main-beetween-right-</find>
-      <find>factor-main-inside-left</find>
-      <find>factor</find>
-      <find>عطف</find>
       <find>label</find>
       <find>custom-file-label</find>
       <find>margin-right: 15px</find>
@@ -439,6 +441,12 @@
       <find>mess</find>
       <find>sendMessage</find>
       <find>تاری</find>
+      <find>header-main-top</find>
+      <find>header-main-top-i</find>
+      <find>header-main-top-inside-res</find>
+      <find>main-welcome</find>
+      <find>logo</find>
+      <find>main-top-in</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -447,8 +455,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/js/components/user-panel.vue" />
-        <option value="$PROJECT_DIR$/resources/views/admin/list-costomer.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/users.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ExclusiveDiscountController.php" />
         <option value="$PROJECT_DIR$/public/js/header.js" />
@@ -470,7 +476,6 @@
         <option value="$PROJECT_DIR$/resources/views/layout/payment.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/user-orders-list.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/pay.vue" />
-        <option value="$PROJECT_DIR$/resources/views/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pay.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_10_11_125845_create_pays_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PayController.php" />
@@ -485,7 +490,6 @@
         <option value="$PROJECT_DIR$/config/payment.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/FileController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/order.vue" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/order-list.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/sendMessageController.php" />
@@ -498,6 +502,10 @@
         <option value="$PROJECT_DIR$/resources/js/components/update-variables.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/main.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CalculationController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/VariableController.php" />
+        <option value="$PROJECT_DIR$/resources/views/index.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
       </list>
     </option>
   </component>
@@ -636,6 +644,24 @@
             <path>
               <item name="borochapend" type="b2602c69:ProjectViewProjectNode" />
               <item name="borochapend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="borochapend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="borochapend" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="borochapend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="borochapend" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="borochapend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="borochapend" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -814,18 +840,24 @@
       <workItem from="1589669075183" duration="9816000" />
       <workItem from="1589971045380" duration="19000" />
       <workItem from="1589971650253" duration="2018000" />
-      <workItem from="1590568082669" duration="6258000" />
+      <workItem from="1590568082669" duration="6460000" />
+      <workItem from="1590652392207" duration="3675000" />
+      <workItem from="1591088423310" duration="76000" />
+      <workItem from="1591176339161" duration="1144000" />
+      <workItem from="1591179549393" duration="1366000" />
+      <workItem from="1591360750055" duration="15000" />
+      <workItem from="1591693130911" duration="442000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="511773000" />
+    <option name="totallyTimeSpent" value="518693000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21140939" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23087248" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -876,96 +908,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/components/order-details.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="95" column="76" selection-start-line="95" selection-start-column="76" selection-end-line="95" selection-end-column="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/login.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ColorfulPrintingCostController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/upload-files.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7595">
-          <caret line="247" column="165" selection-start-line="247" selection-start-column="165" selection-end-line="247" selection-end-column="165" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/delivery.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1984">
-          <caret line="64" column="94" selection-start-line="64" selection-start-column="94" selection-end-line="64" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/fa/validation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4464">
-          <caret line="144" column="14" selection-start-line="144" selection-start-column="9" selection-end-line="144" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/register1.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2790">
-          <caret line="90" column="33" selection-start-line="90" selection-start-column="33" selection-end-line="93" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/register.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6262">
-          <caret line="202" column="24" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/users.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1460">
-          <caret line="171" column="68" selection-start-line="171" selection-start-column="62" selection-end-line="171" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12710">
-          <caret line="412" selection-start-line="412" selection-end-line="455" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pay.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layout/payment.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1333">
-          <caret line="43" column="29" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2945">
-          <caret line="104" column="45" selection-start-line="104" selection-start-column="45" selection-end-line="104" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_10_11_125845_create_pays_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -1106,13 +1048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7626">
-          <caret line="289" column="5" selection-start-line="289" selection-start-column="5" selection-end-line="289" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OrderController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3007">
@@ -1158,15 +1093,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/liara.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/setting.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4867">
+          <caret line="157" column="28" selection-start-line="157" selection-start-column="28" selection-end-line="157" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/add-price.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="992">
           <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="34" selection-end-column="30" />
-          <folding>
-            <element signature="e#3832#4286#0" />
-            <element signature="e#4307#4756#0" />
-            <element signature="e#4778#5233#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1177,51 +1117,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/main.vue">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BindingController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="252" column="17" selection-start-line="252" selection-start-column="17" selection-end-line="252" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-          <folding>
-            <element signature="e#7#35#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="186">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MonochromePrintingCostController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-713">
+        <state relative-caret-position="186">
           <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BindingController.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/components/main.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-372">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/liara.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/setting.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="157" column="28" selection-start-line="157" selection-start-column="28" selection-end-line="157" selection-end-column="86" />
+        <state relative-caret-position="7812">
+          <caret line="252" column="17" selection-start-line="252" selection-start-column="17" selection-end-line="252" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CalculationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="94" column="8" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
+        <state relative-caret-position="493">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2511">
+          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/logo/OK Logo Site.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/.htaccess">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VariableController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3689">
+          <caret line="119" column="13" selection-start-line="119" selection-start-column="9" selection-end-line="119" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="60" column="76" selection-start-line="60" selection-start-column="76" selection-end-line="60" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/access.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/access1.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/axios.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/bootstrap.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/contact.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/footer.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="3143" selection-start-line="3143" selection-end-line="3143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layout/header.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="443" selection-start-line="443" selection-end-line="443" />
+          <folding>
+            <element signature="e#464#1279#0#PHP" />
+            <element signature="e#1285#2445#0#PHP" />
+            <element signature="e#2451#3070#0#PHP" />
+            <element signature="e#3076#4096#0#PHP" />
+            <element signature="e#4102#4994#0#PHP" />
+            <element signature="e#5000#5106#0#PHP" />
+            <element signature="e#5112#7961#0#PHP" />
+            <element signature="e#7967#8609#0#PHP" />
+            <element signature="e#8615#10037#0#PHP" />
+            <element signature="e#10043#10924#0#PHP" />
+            <element signature="e#10930#11782#0#PHP" />
+            <element signature="e#11788#12019#0#PHP" />
+            <element signature="e#12025#12293#0#PHP" />
+            <element signature="e#13395#13753#0#PHP" />
+            <element signature="e#13759#14236#0#PHP" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -58,11 +58,11 @@
                 </ul>
             </nav>
         </div>
-        <div id="logo" class="col-xs col-9 col-sm-9 col-md col-lg-2 col-xl-2 header-main-top-inside delete-padding">
+        <div id="logo" class="col-xs col-9 col-sm-9 col-md col-lg-3 col-xl-3 header-main-top-inside delete-padding">
             {{--my api--}}
         </div>
 
-        <div id="logo1" class="col-xs col-7 col-sm-7 col-md-8 col-lg-2 col-xl-2 header-main-top-inside-res delete-padding">
+        <div id="logo1" class="col-xs col-7 col-sm-4 col-md-5 col-lg-2 col-xl-2 header-main-top-inside-res delete-padding">
             <img src="/img/logo/logo-top-res.png">
         </div>
         <div class="col-xs col col-sm col-md-9 col-lg-6 col-xl-6 header-main-beetween-right-menu">
@@ -71,7 +71,7 @@
             </div>
         </div>
         <!----new----->
-        <div id="newdropdown" class="col-xs col col-sm col-md-3 col-lg-3 col-xl-4 main-welcome">
+        <div id="newdropdown" class="col-xs col col-sm col-md-4 col-lg-3 col-xl-3 main-welcome">
             <div class="col-xs col col-sm col-md- col-lg- col-xl-12 main-welcome-inside">
                 <a href="#menu" id="toggle">
                     <span class="user-icone">

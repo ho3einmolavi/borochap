@@ -89,6 +89,7 @@ class CalculationController extends Controller
             'binding_cost' => $res5['cost']
         ];
 
+
         $cost = array_values($calculation);
         $book_price = array_sum($cost);
         $final_price = $book_price * $request->circulation;

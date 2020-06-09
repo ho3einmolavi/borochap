@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Size;
 use App\Variable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -18,6 +19,35 @@ class VariableController extends Controller
         $var = Variable::orderBy('id' , 'DESC')->first();
         if ($var)
         {
+            if ($var->hazine_jeld_selefon)
+            {
+                $obj = json_decode($var->hazine_jeld_selefon);
+                $obj1 = $obj;
+                $ids = Size::all()->pluck('id');
+                foreach ($obj as $key => $item)
+                {
+                    $flag = 0;
+                    foreach ($ids as $id)
+                    {
+                        if ($id == $item->id)
+                        {
+                            $flag = 1;
+                        }
+                    }
+                    if ($flag == 0)
+                    {
+                        unset($obj[$key]);
+                    }
+                }
+                if ($obj != $obj1)
+                {
+                    $var->update([
+                       'hazine_jeld_selefon' => $obj
+                    ]);
+                }
+            }
+
+
             return new JsonResponse([$var]);
         }
         else

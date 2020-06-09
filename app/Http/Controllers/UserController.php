@@ -433,7 +433,7 @@ class UserController extends Controller
             'last_name' => 'required' ,
             'phone' => 'required|iran_mobile' ,
             'printing_office_number' => 'required|numeric' ,
-            'postal_code' => 'required|numeric|max:10' ,
+            'postal_code' => 'required|numeric|max:9999999999' ,
             'address' => 'required' ,
             'delivery' => 'required' ,
         ]);
@@ -441,7 +441,6 @@ class UserController extends Controller
         if ($validator->fails())
         {
             return response()->json("لطفا اطلاعات را صحیح و کامل کنید" , 400);
-
         }
 
         $user = Auth::user();
