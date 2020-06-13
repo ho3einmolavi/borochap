@@ -194,6 +194,10 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        foreach ($users as $user)
+        {
+            $user['exclusive_discount'] = $user->exclusiveDiscount;
+        }
         return new JsonResponse($users);
     }
 
@@ -441,6 +445,7 @@ class UserController extends Controller
         if ($validator->fails())
         {
             return response()->json("لطفا اطلاعات را صحیح و کامل کنید" , 400);
+           // return response()->json($validator->errors()->all() , 400);
         }
 
         $user = Auth::user();

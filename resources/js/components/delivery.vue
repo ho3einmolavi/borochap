@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="col-xs col-10 col-sm col-md col-lg col-xl-11 send-info-register-delivery">
-                            <input type="button" value="ارسال" v-on:click="edit"  class="btn-btn" style="">
+                            <input type="button" value="مرحله بعد" v-on:click="edit"  class="btn-btn" style="">
                         </div>
 
                         <div class="alert alert-success form-control color-border p-input" v-if="ok === 1" role="alert" style="margin-top: 71px;height: auto;float: right">
@@ -153,7 +153,6 @@
                         localStorage.setItem('user' , JSON.stringify(res.data));
                         this.ok = 1;
                         this.get_user();
-
                     })
                     .catch(err => {
                         console.log(err.response);

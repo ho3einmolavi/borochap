@@ -156,7 +156,7 @@
 <!------>
                     <div class="form-group col-xs col col-sm col-md col-lg col-xl-11 flex">
                         <label for="inputname7" class="text-purple-input">  نحوه محاسبه قیمت </label>
-                        <select id="inputname7" v-model="without_paper" class="form-control form-option select-size color-border">
+                        <select id="inputname9" v-model="without_paper" class="form-control form-option select-size color-border">
                             <option selected="" class="opti" value="0">  همراه با کاغذ </option>
                             <option value="1"> بدون کاغذ  </option>
                         </select>
@@ -223,7 +223,7 @@
                 size: '',
                 material: '' ,
                 one_color_number: 1 ,
-                colorful_number: 1 ,
+                colorful_number: 0 ,
                 colorful_toner: 'text_picture' ,
                 cover_type: 'یک رو' ,
                 cover_material: 'سلفون براق' ,

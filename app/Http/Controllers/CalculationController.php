@@ -54,6 +54,11 @@ class CalculationController extends Controller
             return response()->json('لطفا تمامی مقادیر را کامل کنید' , 400);
         }
 
+        if ($request->circulation == 0 || ($request->one_color_number == 0 && $request->colorful_number == 0))
+        {
+            return response()->json('مقادیر وارد شده صحیح نیست' , 400);
+        }
+
         $size = Size::where('name' , $request->size)->firstOrFail();
         $material = Material::where('name' , $request->material)->firstOrFail();
         $price = DB::table('material_size')->where('size_id' , $size->id)

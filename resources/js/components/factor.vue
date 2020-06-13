@@ -271,7 +271,6 @@
 <script>
     export default {
         mounted() {
-            console.log('factor mounted.');
             this.title = localStorage.title;
             this.factor();
         } ,
@@ -301,13 +300,13 @@
                 {
                     this.off = 0;
                     this.price1 = 0;
-                    this.cost = this.data1.final_price;
+                    this.cost = Math.ceil(this.data1.final_price);
                     this.price2 = this.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
                 else
                 {
-                    this.cost = JSON.parse(localStorage.cost);
-                    this.off = (this.data1.final_price) - (this.cost);
+                    this.cost = Math.ceil(JSON.parse(localStorage.cost));
+                    this.off = Math.ceil((this.data1.final_price) - (this.cost));
                     this.price2 = this.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     this.price1 = this.off.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }

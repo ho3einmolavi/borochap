@@ -89,9 +89,8 @@
                             <a id="error234" v-if="item.Exclusive_discounts_id === 0" class="item delete" @click="set_off(item.id)" data-toggle="tooltip" data-placement="top" title="" data-original-title="حذف ">
                                 <i class="far fa-address-card"></i>
                             </a>
-                            <a id="error2314" style="background-color: green" v-if="item.Exclusive_discounts_id !== 0" @click="unset_off(item.id)" class="item delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="حذف ">
-                                <i class="fas fa-check" style="color: white"></i>
-                            </a>
+
+                            <a style="cursor: pointer" @click="unset_off(item.id)" v-if="item.Exclusive_discounts_id !== 0"><span class="text-span title-little"> <span> {{item.exclusive_discount.amount}} </span> درصد </span></a>
                         </div>
 
 
