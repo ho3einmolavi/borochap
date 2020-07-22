@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/order/{any}', function () {
+    return view('index');
+})->where('any', '.*');
+
 Route::get('/footer', function () {
     return view('layout.footer');
 });

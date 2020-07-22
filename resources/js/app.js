@@ -48,6 +48,7 @@ Vue.component('user-orders-list', require('./components/user-orders-list.vue').d
 Vue.component('user-wallet', require('./components/user-wallet.vue').default);
 Vue.component('user-change-password', require('./components/user-change-password.vue').default);
 Vue.component('user-order-details', require('./components/user-order-details.vue').default);
+Vue.component('app', require('./components/app.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -67,6 +68,10 @@ const routes = [
     { path: '/user/wallet', component: Vue.component('user-orders-list', require('./components/user-wallet.vue').default)},
     { path: '/user/change-password', component: Vue.component('user-orders-list', require('./components/user-change-password.vue').default)},
     { path: '/user/order-details/:orderID', component: Vue.component('user-orders-list', require('./components/user-order-details.vue').default)},
+    { path: '/', component: Vue.component('main-form', require('./components/main.vue').default)},
+    { path: '/order/register', component: Vue.component('register', require('./components/register.vue').default)},
+    { path: '/order/upload-files', component: Vue.component('register', require('./components/upload-files.vue').default)},
+    { path: '/order/information', component: Vue.component('register', require('./components/delivery.vue').default)},
 ];
 
 const router = new VueRouter({

@@ -146,25 +146,20 @@
             </div>
         </div>
         <div class="col-xs col col-sm col-md col-lg col-xl-12 flex" style="height:50px;">
-        <div v-if="ok === 1" class="col-xs col col-sm col-md col-lg col-xl-9 send-input" style="display: flex;align-items: center;justify-content: flex-end;height: 45px;">
-            <div class="send-input-inside" style="height: 45px;background-color:#7c1065;;border-radius: 5px;display: flex;align-items: center;justify-content: flex-end;">
-                <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="" style="width: 110px;color: #fff;text-align: center;">
-                    ادامه
-                </a>
-            </div>
-        </div>
-        <div v-if="ok === 1" class="col-xs col col-sm col-md col-lg col-xl-3 send-input" style="display: flex;align-items: center;justify-content: flex-start;height: 45px;">
-            <div class="send-input-inside" style="height: 45px;background-color:#7c1065;;border-radius: 5px;display: flex;align-items: center;justify-content: flex-start;">
-                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="" style="width: 110px;color: #fff;text-align: center;">
-                    قبلی
-                </a>
-            </div>
-        </div>
-          <div v-if="ok === 0" class="col-xs col col-sm col-md col-lg col-xl-10 send-input" style="display: flex;align-items: center;justify-content: flex-end;height: 45px;margin-right:30px;">
+
+        <!--<div v-if="ok === 1" class="col-xs col col-sm col-md col-lg col-xl-9 send-input" style="display: flex;align-items: center;justify-content: flex-end;height: 45px;">-->
+            <!--<div class="send-input-inside" style="height: 45px;background-color:#7c1065;;border-radius: 5px;display: flex;align-items: center;justify-content: flex-end;">-->
+                <!--<router-link to="/order/information" data-toggle="tab" aria-controls="step3" role="tab" title="" style="width: 110px;color: #fff;text-align: center;">-->
+                    <!--ادامه-->
+                <!--</router-link>-->
+            <!--</div>-->
+        <!--</div>-->
+
+          <div class="col-xs col col-sm col-md col-lg col-xl-10 send-input" style="display: flex;align-items: center;justify-content: flex-end;height: 45px;margin-right:30px;">
             <div class="send-input-inside" style="height: 45px;background-color:#7c1065;border-radius: 5px;display: flex;align-items: center;justify-content: flex-end;">
-                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="" style="width: 110px;color: #fff;text-align: center;">
+                <router-link to="/" data-toggle="tab" aria-controls="step1" role="tab" title="" style="width: 110px;color: #fff;text-align: center;">
                     قبلی
-                </a>
+                </router-link>
             </div>
         </div>
         </div>

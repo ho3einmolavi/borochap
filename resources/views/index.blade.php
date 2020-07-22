@@ -33,10 +33,11 @@
     <link href="/css/flat-ui/flat-ui.css" rel="stylesheet">
 
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/step-price/step-price.css">
-    <link rel="stylesheet" type="text/css" href="css/menu-responsive/toggle.css">
-    <link rel="stylesheet" type="text/css" href="css/video.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/step-price/step-price.css">
+    <link rel="stylesheet" type="text/css" href="/css/menu-responsive/toggle.css">
+    <link rel="stylesheet" type="text/css" href="/css/loading.css">
+    <link rel="stylesheet" type="text/css" href="/css/video.css">
     <script src="/js/header.js"></script>
     <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="1ace1ed2-2d7c-4f94-a71e-bfd1a680fc23";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </head>
@@ -75,7 +76,7 @@
             <div class="col-xs col col-sm col-md- col-lg- col-xl-12 main-welcome-inside">
                 <a href="#menu" id="toggle">
                     <span class="user-icone">
-                    <img src="img/icon/user-icon-img.png">
+                    <img src="/img/icon/user-icon-img.png">
                 </span>
                 <span class="title-3" id="fullname">
                     {{--my api--}}
@@ -234,7 +235,7 @@
                         {{--</a>--}}
                         <span class="round-tab">
                                 <!--<i class="glyphicon glyphicon-folder-open"></i>-->
-                                <img src="img/icon/calculate-price.png">
+                                <img src="/img/icon/calculate-price.png">
                             </span>
                     </li>
 
@@ -244,7 +245,7 @@
                     <li role="presentation" class="disabled">
                             <span class="round-tab">
                                 <!--<i class="glyphicon glyphicon-picture"></i>-->
-                                <img src="img/icon/send-file.png">
+                                <img src="/img/icon/send-file.png">
                             </span>
                     </li>
                     <li role="presentation" class="disabled">
@@ -271,47 +272,31 @@
             </div>
             <form role="form">
                 <div class="tab-content">
-
-                    <!--step1-->
-                    <div class="tab-pane active" role="tabpanel" id="step1">
-                        <!--<h3>Step 1</h3>
-                        <p>This is step 1</p>-->
-                        <div class="col-xs col col-sm col-md col-lg col-xl-12 body-main-all" id="price">
-                            <div class="col-xs col col-sm col-md col-lg col-xl-12 step-to-bottom">
-                              <div id="app">
-                                  <main-form></main-form>
-                              </div>
-                            </div>
-                        </div>
-                       <div id="66">
-                           {{--my api--}}
-                       </div>
-                        <div id="77">
-                            {{--my api--}}
-                        </div>
-
+                    <div id="loading" style="left: 50%;bottom: -50px;" class="lds-ellipsis">
+                        <div></div><div></div><div></div><div></div></div>
+                    <div id="app">
+                        <app id="content"></app>
                     </div>
-                    <!--end-step1-->
 
-                    <!--step2-->
-                    <div class="tab-pane" role="tabpanel" id="step2">
-                        <!--<h3>Step 2</h3>
-                        <p>This is step 2</p>-->
+                    {{--<!--step2-->--}}
+                    {{--<div class="tab-pane" role="tabpanel" id="step2">--}}
+                        {{--<!--<h3>Step 2</h3>--}}
+                        {{--<p>This is step 2</p>-->--}}
 
-                        <div id="app1">
-                            <register></register>
-                        </div>
+                        {{--<div id="app1">--}}
+                            {{--<register></register>--}}
+                        {{--</div>--}}
 
-                    </div>
-                    <!--end-step2-->
+                    {{--</div>--}}
+                    {{--<!--end-step2-->--}}
 
-                    <!--step3-->
-                    <div class="tab-pane" role="tabpanel" id="step3">
-                        <!--<h3>Step 2</h3>
-                        <p>This is step 3</p>-->
-                        <div id="app2">
-                            <file></file>
-                        </div>
+                    {{--<!--step3-->--}}
+                    {{--<div class="tab-pane" role="tabpanel" id="step3">--}}
+                        {{--<!--<h3>Step 2</h3>--}}
+                        {{--<p>This is step 3</p>-->--}}
+                        {{--<div id="app2">--}}
+                            {{--<file></file>--}}
+                        {{--</div>--}}
                         {{--<ul class="list-inline pull-right bb-responsive" style="margin-left: 80px;">--}}
                             {{--<div class="bottom-li">--}}
                                 {{--<li><button type="button"  style="background-color: #5f1255 !important;" class="btn btn-primary next-step">ارسال و ادامه  </button></li>--}}
@@ -319,16 +304,18 @@
                             {{--</div>--}}
                         {{--</ul>--}}
 
-                        <div id="777">
+                        {{--<div id="777">--}}
                            {{--my api--}}
-                        </div>
+                        {{--</div>--}}
 
-                    </div>
-                    <!--end-step3-->
-                    <!--step4-->
-                    <div class="tab-pane" role="tabpanel" id="step5">
-                        <!--<h3>Step 2</h3>
-                        <p>This is step 2</p>-->
+                    {{--</div>--}}
+                    {{--<!--end-step3-->--}}
+
+
+                    {{--<!--step4-->--}}
+                    {{--<div class="tab-pane" role="tabpanel" id="step5">--}}
+                        {{--<!--<h3>Step 2</h3>--}}
+                        {{--<p>This is step 2</p>-->--}}
                         {{--<div id="app3">--}}
                             {{--<order></order>--}}
                         {{--</div>--}}
@@ -338,23 +325,25 @@
                                 {{--<li><button type="button" style="background-color: #868282;margin-right: 10px;font-family: irs;" class="btn btn-default prev-step">قبل</button></li>--}}
                             {{--</div>--}}
                         {{--</ul>--}}
-                        <div class="col-xs col col-sm col-md col-lg col-xl-12 send-input" style="display: flex;align-items: center;justify-content: flex-end;height: 45px;">
-                            <div class="col-xs col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 send-input-inside" style="height: 45px;background-color:#7c1065;;border-radius: 5px;display: flex;align-items: center;justify-content: flex-end;margin-left: 160px">
-                                <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="" style="width: 146px;color: #fff;text-align: center;">
-                                    قبلی
-                                </a>
-                            </div>
-                        </div>
+                        {{--<div class="col-xs col col-sm col-md col-lg col-xl-12 send-input" style="display: flex;align-items: center;justify-content: flex-end;height: 45px;">--}}
+                            {{--<div class="col-xs col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 send-input-inside" style="height: 45px;background-color:#7c1065;;border-radius: 5px;display: flex;align-items: center;justify-content: flex-end;margin-left: 160px">--}}
+                                {{--<a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="" style="width: 146px;color: #fff;text-align: center;">--}}
+                                    {{--قبلی--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
-                    </div>
-                    <!--end-step4-->
-                    <!--step5-->
-                    <div class="tab-pane" role="tabpanel" id="step4">
-                        <!--<h3>Step 2</h3>
-                         <p>This is step 2</p>-->
-                        <div id="app4">
-                            <delivery></delivery>
-                        </div>
+                    {{--</div>--}}
+                    {{--<!--end-step4-->--}}
+
+
+                    {{--<!--step5-->--}}
+                    {{--<div class="tab-pane" role="tabpanel" id="step4">--}}
+                        {{--<!--<h3>Step 2</h3>--}}
+                         {{--<p>This is step 2</p>-->--}}
+                        {{--<div id="app4">--}}
+                            {{--<delivery></delivery>--}}
+                        {{--</div>--}}
                         {{--<ul class="list-inline pull-right bb-responsive" style="margin-left: 180px;">--}}
                             {{--<div class="bottom-li">--}}
                                 {{--<li><button type="button"  style="background-color: #5f1255 !important;" class="btn btn-primary next-step">ارسال و ادامه  </button></li>--}}
@@ -362,21 +351,21 @@
                             {{--</div>--}}
                         {{--</ul>--}}
 
-                        <div class="col-xs col col-sm col-md col-lg col-xl-12 send-input" style="display: flex;align-items: center;justify-content: flex-end;height: 45px;">
-                            <div class="col-xs col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 send-input-inside" style="height: 45px;background-color:#7c1065;;border-radius: 5px;display: flex;align-items: center;justify-content: flex-end;margin-left: 160px">
-                                <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="" style="width: 146px;color: #fff;text-align: center;">
-                                    قبلی
-                                </a>
-                            </div>
-                        </div>
+                        {{--<div class="col-xs col col-sm col-md col-lg col-xl-12 send-input" style="display: flex;align-items: center;justify-content: flex-end;height: 45px;">--}}
+                            {{--<div class="col-xs col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 send-input-inside" style="height: 45px;background-color:#7c1065;;border-radius: 5px;display: flex;align-items: center;justify-content: flex-end;margin-left: 160px">--}}
+                                {{--<a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="" style="width: 146px;color: #fff;text-align: center;">--}}
+                                    {{--قبلی--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
-                    </div>
-                    <!--end-step5-->
+                    {{--</div>--}}
+                    {{--<!--end-step5-->--}}
 
-                    <div class="tab-pane" role="tabpanel" id="complete">
-                        <h3>Complete</h3>
-                        <p>You have successfully completed all steps.</p>
-                    </div>
+                    {{--<div class="tab-pane" role="tabpanel" id="complete">--}}
+                        {{--<h3>Complete</h3>--}}
+                        {{--<p>You have successfully completed all steps.</p>--}}
+                    {{--</div>--}}
                     <div class="clearfix"></div>
                 </div>
             </form>
@@ -387,9 +376,6 @@
 <!-- partial -->
 
 
-
-
-
 <!---------------------------footer------------------------------->
 
     @include('layout.footer')
@@ -398,6 +384,7 @@
 <!--flat-ui-->
 
 <script src="{{asset('js/app.js')}}"></script>
+<script type="text/javascript">document.getElementById('loading').style.visibility = "hidden"</script>
 <script src="/js/flat-ui/flat-ui.js"></script>
 <!--step-price-->
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>

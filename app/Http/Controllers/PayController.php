@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Shetabit\Payment\Exceptions\InvalidPaymentException;
 use Shetabit\Payment\Facade\Payment;
 use Shetabit\Payment\Invoice;
+use SoapClient;
 use Zarinpal\Zarinpal;
 
 class PayController extends Controller

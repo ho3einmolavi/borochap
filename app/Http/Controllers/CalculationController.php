@@ -114,7 +114,7 @@ class CalculationController extends Controller
             'edge' => $request->edge  ,
             'Binding' => $request->Binding ,
             'book_cost' => round($book_price),
-            'final_price' => round($final_price) ,
+            'final_price' => round($final_price) - round($final_price) % 100 ,
             'date' => Jalalian::forge('now')->format('Y/m/d')
         ];
 
