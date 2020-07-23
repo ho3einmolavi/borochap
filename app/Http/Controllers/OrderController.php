@@ -97,7 +97,7 @@ class OrderController extends Controller
 
         if ($request->has('finance'))
         {
-            $finance = Finance::find($request->financeF);
+            $finance = Finance::find($request->finance);
             $finance->update([
                 'order_id' => $order->id
             ]);

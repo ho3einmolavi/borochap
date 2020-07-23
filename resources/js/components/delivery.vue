@@ -89,6 +89,13 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs col col-sm col-md col-lg col-xl-12 send-input" style="display: flex;align-items: center;justify-content: flex-end;height: 45px;">
+            <div class="col-xs col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 send-input-inside" style="height: 45px;background-color:#7c1065;;border-radius: 5px;display: flex;align-items: center;justify-content: flex-end;margin-left: 160px">
+                <router-link to="/order/upload-files" aria-controls="step3" role="tab" title="" style="width: 146px;color: #fff;text-align: center;" dideo-checked="true">
+                    قبلی
+                </router-link>
+            </div>
+        </div>
     </div>
 </template>
 

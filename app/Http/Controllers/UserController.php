@@ -313,7 +313,7 @@ class UserController extends Controller
         $body = [
             'receptor' => $request->phone,
             'token' => $code,
-            'template' => 'verify'
+            'template' => 'BRverify'
         ];
         $headers = [
             'Accept' => 'application/json',

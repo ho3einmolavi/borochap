@@ -2665,6 +2665,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     console.log('delivery mounted');
@@ -6150,6 +6157,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -72087,6 +72096,58 @@ var render = function() {
             )
           : _vm._e()
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "col-xs col col-sm col-md col-lg col-xl-12 send-input",
+        staticStyle: {
+          display: "flex",
+          "align-items": "center",
+          "justify-content": "flex-end",
+          height: "45px"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "col-xs col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 send-input-inside",
+            staticStyle: {
+              height: "45px",
+              "background-color": "#7c1065",
+              "border-radius": "5px",
+              display: "flex",
+              "align-items": "center",
+              "justify-content": "flex-end",
+              "margin-left": "160px"
+            }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                staticStyle: {
+                  width: "146px",
+                  color: "#fff",
+                  "text-align": "center"
+                },
+                attrs: {
+                  to: "/order/upload-files",
+                  "aria-controls": "step3",
+                  role: "tab",
+                  title: "",
+                  "dideo-checked": "true"
+                }
+              },
+              [_vm._v("\n                قبلی\n            ")]
+            )
+          ],
+          1
+        )
+      ]
     )
   ])
 }
@@ -81229,7 +81290,62 @@ var render = function() {
             )
           : _vm._e()
       ]
-    )
+    ),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "777" } }, [
+      _c(
+        "div",
+        {
+          staticClass: "col-xs col- col-sm col-md col-lg col-xl-12 send-input",
+          staticStyle: {
+            display: "flex",
+            "align-items": "center",
+            "justify-content": "flex-end",
+            height: "45px"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "col-xs col-4 col-sm-3 col-md-2 col-lg-1 col-xl-1 send-input-inside",
+              staticStyle: {
+                height: "45px",
+                "background-color": "#7c1065",
+                "border-radius": "5px",
+                display: "flex",
+                "align-items": "center",
+                "justify-content": "flex-end",
+                "margin-left": "55px"
+              }
+            },
+            [
+              _c(
+                "router-link",
+                {
+                  staticStyle: {
+                    width: "146px",
+                    color: "#fff",
+                    "text-align": "center"
+                  },
+                  attrs: {
+                    to: "/",
+                    "data-toggle": "tab",
+                    "aria-controls": "step1",
+                    role: "tab",
+                    title: "",
+                    "dideo-checked": "true"
+                  }
+                },
+                [_vm._v("\n                    قبلی\n                ")]
+              )
+            ],
+            1
+          )
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
